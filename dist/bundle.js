@@ -26340,8 +26340,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-
 	var Link = __webpack_require__(172).Link;
+	var Versus = __webpack_require__(233);
+	__webpack_require__(229);
 
 	function getActiveClass(path) {
 		var current = window.location.hash.slice(1);
@@ -26355,30 +26356,2763 @@
 			return React.createElement(
 				'div',
 				null,
-				React.createElement(
-					'header',
-					null,
-					React.createElement(
-						Link,
-						{ to: '/', className: getActiveClass('/') },
-						'Home'
-					)
-				),
-				React.createElement(
-					'main',
-					null,
-					React.createElement(
-						'h1',
-						null,
-						'App'
-					),
-					this.props.children
-				)
+				React.createElement('header', { className: 'battlezone-header' }),
+				React.createElement(Versus, { wookie: '', className: 'wookie' })
 			);
 		}
 	});
 
 	module.exports = App;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Select = __webpack_require__(258);
+
+	var Fighter = React.createClass({
+	  displayName: 'Fighter',
+
+	  updateValue(newValue) {
+	    if (newValue === undefined) newValue = null;
+	    this.setState({
+	      selectValue: newValue
+	    });
+	    console.log('State changed to ' + JSON.stringify(newValue.value));
+	  },
+	  getInitialState() {
+	    return {
+	      disabled: false,
+	      searchable: this.props.searchable,
+	      selectValue: null,
+	      clearable: true
+	    };
+	  },
+	  render: function () {
+	    var options = [{ value: '3-D Man', label: '3-D Man' }, { value: 'A-Bomb', label: 'A-Bomb' }, { value: 'A.I.M.', label: 'A.I.M.' }, { value: 'Aaron Stack', label: 'Aaron Stack' }, { value: 'Abomination', label: 'Abomination' }, { value: 'Absorbing Man', label: 'Absorbing Man' }, { value: 'Abyss', label: 'Abyss' }, { value: 'Adam Destine', label: 'Adam Destine' }, { value: 'Adam Warlock', label: 'Adam Warlock' }, { value: 'Aegis', label: 'Aegis' }, { value: 'Agent Brand', label: 'Agent Brand' }, { value: 'Agent X', label: 'Agent X' }, { value: 'Agent Zero', label: 'Agent Zero' }, { value: 'Agents of Atlas', label: 'Agents of Atlas' }, { value: 'Aginar', label: 'Aginar' }, { value: 'Air-Walker', label: 'Air-Walker' }, { value: 'Ajak', label: 'Ajak' }, { value: 'Ajaxis', label: 'Ajaxis' }, { value: 'Akemi', label: 'Akemi' }, { value: 'Alain', label: 'Alain' }, { value: 'Albert Cleary', label: 'Albert Cleary' }, { value: 'Albion', label: 'Albion' }, { value: 'Alex Power', label: 'Alex Power' }, { value: 'Alex Wilder', label: 'Alex Wilder' }, { value: 'Alexa Mendez', label: 'Alexa Mendez' }, { value: 'Alexander Pierce', label: 'Alexander Pierce' }, { value: 'Alice', label: 'Alice' }, { value: 'Alicia Masters', label: 'Alicia Masters' }, { value: 'Alpha Flight', label: 'Alpha Flight' }, { value: 'Alvin Maker', label: 'Alvin Maker' }, { value: 'Amadeus Cho', label: 'Amadeus Cho' }, { value: 'Amanda Sefton', label: 'Amanda Sefton' }, { value: 'Amazoness', label: 'Amazoness' }, { value: 'American Eagle', label: 'American Eagle' }, { value: 'Amiko', label: 'Amiko' }, { value: 'Amora', label: 'Amora' }, { value: 'Amphibian', label: 'Amphibian' }, { value: 'Amun', label: 'Amun' }, { value: 'Ancient One', label: 'Ancient One' }, { value: 'Angel', label: 'Angel' }, { value: 'Angela', label: 'Angela' }, { value: 'Anita Blake', label: 'Anita Blake' }, { value: 'Anne Marie Hoag', label: 'Anne Marie Hoag' }, { value: 'Annihilus', label: 'Annihilus' }, { value: 'Anole', label: 'Anole' }, { value: 'Ant-Man', label: 'Ant-Man' }, { value: 'Anthem', label: 'Anthem' }, { value: 'Apocalypse', label: 'Apocalypse' }, { value: 'Aqueduct', label: 'Aqueduct' }, { value: 'Arachne', label: 'Arachne' }, { value: 'Araٌa', label: 'Araٌa' }, { value: 'Arcade', label: 'Arcade' }, { value: 'Arcana', label: 'Arcana' }, { value: 'Archangel', label: 'Archangel' }, { value: 'Arclight', label: 'Arclight' }, { value: 'Ares', label: 'Ares' }, { value: 'Argent', label: 'Argent' }, { value: 'Armadillo', label: 'Armadillo' }, { value: 'Armor', label: 'Armor' }, { value: 'Armory', label: 'Armory' }, { value: 'Arnim Zola', label: 'Arnim Zola' }, { value: 'Arsenic', label: 'Arsenic' }, { value: 'Artiee', label: 'Artiee' }, { value: 'Asgardian', label: 'Asgardian' }, { value: 'Askew-Tronics', label: 'Askew-Tronics' }, { value: 'Asylum', label: 'Asylum' }, { value: 'Atlas', label: 'Atlas' }, { value: 'Aurora', label: 'Aurora' }, { value: 'Avalanche', label: 'Avalanche' }, { value: 'Avengers', label: 'Avengers' }, { value: 'Azazel', label: 'Azazel' }, { value: 'Banshee', label: 'Banshee' }, { value: 'Baron Strucker', label: 'Baron Strucker' }, { value: 'Baron Zemo', label: 'Baron Zemo' }, { value: 'Baroness S\'Bak', label: 'Baroness S\'Bak' }, { value: 'Barracuda', label: 'Barracuda' }, { value: 'Bart Rozum', label: 'Bart Rozum' }, { value: 'Bastion', label: 'Bastion' }, { value: 'Batroc the Leaper', label: 'Batroc the Leaper' }, { value: 'Battering Ram', label: 'Battering Ram' }, { value: 'Beak', label: 'Beak' }, { value: 'Beast', label: 'Beast' }, { value: 'Becatron', label: 'Becatron' }, { value: 'Bedlam', label: 'Bedlam' }, { value: 'Beef', label: 'Beef' }, { value: 'Beetle', label: 'Beetle' }, { value: 'Ben Grimm', label: 'Ben Grimm' }, { value: 'Ben Parker', label: 'Ben Parker' }, { value: 'Ben Reilly', label: 'Ben Reilly' }, { value: 'Ben Urich', label: 'Ben Urich' }, { value: 'Bengal', label: 'Bengal' }, { value: 'Beta-Ray Bill', label: 'Beta-Ray Bill' }, { value: 'Betty Brant', label: 'Betty Brant' }, { value: 'Betty Ross', label: 'Betty Ross' }, { value: 'Beyonder', label: 'Beyonder' }, { value: 'Bi-Beast', label: 'Bi-Beast' }, { value: 'Big Bertha', label: 'Big Bertha' }, { value: 'Big Wheel', label: 'Big Wheel' }, { value: 'Bill Hollister', label: 'Bill Hollister' }, { value: 'Bishop', label: 'Bishop' }, { value: 'Black Bird', label: 'Black Bird' }, { value: 'Black Bolt', label: 'Black Bolt' }, { value: 'Black Cat', label: 'Black Cat' }, { value: 'Black Crow', label: 'Black Crow' }, { value: 'Black Knight', label: 'Black Knight' }, { value: 'Black Panther', label: 'Black Panther' }, { value: 'Black Queen', label: 'Black Queen' }, { value: 'Black Tarantula', label: 'Black Tarantula' }, { value: 'Black Tom', label: 'Black Tom' }, { value: 'Black Widow', label: 'Black Widow' }, { value: 'Black Widow/Natasha Romanoff', label: 'Black Widow/Natasha Romanoff' }, { value: 'Blackheart', label: 'Blackheart' }, { value: 'Blacklash', label: 'Blacklash' }, { value: 'Blackout', label: 'Blackout' }, { value: 'Blade', label: 'Blade' }, { value: 'Blastaar', label: 'Blastaar' }, { value: 'Blazing Skull', label: 'Blazing Skull' }, { value: 'Blindfold', label: 'Blindfold' }, { value: 'Blink', label: 'Blink' }, { value: 'Blizzard', label: 'Blizzard' }, { value: 'Blob', label: 'Blob' }, { value: 'Blockbuster', label: 'Blockbuster' }, { value: 'Blok', label: 'Blok' }, { value: 'Bloke', label: 'Bloke' }, { value: 'Blonde Phantom', label: 'Blonde Phantom' }, { value: 'Bloodaxe', label: 'Bloodaxe' }, { value: 'Bloodscream', label: 'Bloodscream' }, { value: 'Bloodstorm', label: 'Bloodstorm' }, { value: 'Bloodstrike', label: 'Bloodstrike' }, { value: 'Blue Blade', label: 'Blue Blade' }, { value: 'Blue Marvel', label: 'Blue Marvel' }, { value: 'Blue Shield', label: 'Blue Shield' }, { value: 'Blur', label: 'Blur' }, { value: 'Bob, Agent of Hydra', label: 'Bob, Agent of Hydra' }, { value: 'Boom Boom', label: 'Boom Boom' }, { value: 'Boomer', label: 'Boomer' }, { value: 'Boomerang', label: 'Boomerang' }, { value: 'Box', label: 'Box' }, { value: 'Bride of Nine Spiders', label: 'Bride of Nine Spiders' }, { value: 'Bromley', label: 'Bromley' }, { value: 'Brood', label: 'Brood' }, { value: 'Brother Voodoo', label: 'Brother Voodoo' }, { value: 'Brotherhood of Evil Mutants', label: 'Brotherhood of Evil Mutants' }, { value: 'Brotherhood of Mutants', label: 'Brotherhood of Mutants' }, { value: 'Bruce Banner', label: 'Bruce Banner' }, { value: 'Brute', label: 'Brute' }, { value: 'Bucky', label: 'Bucky' }, { value: 'Bug', label: 'Bug' }, { value: 'Bulldozer', label: 'Bulldozer' }, { value: 'Bullseye', label: 'Bullseye' }, { value: 'Bushwacker', label: 'Bushwacker' }, { value: 'Butterfly', label: 'Butterfly' }, { value: 'Cable', label: 'Cable' }, { value: 'Calamity', label: 'Calamity' }, { value: 'Caliban', label: 'Caliban' }, { value: 'Callisto', label: 'Callisto' }, { value: 'Calypso', label: 'Calypso' }, { value: 'Cammi', label: 'Cammi' }, { value: 'Cannonball', label: 'Cannonball' }, { value: 'Cap\'n Oz', label: 'Cap\'n Oz' }, { value: 'Captain America', label: 'Captain America' }, { value: 'Captain America/Steve Rogers', label: 'Captain America/Steve Rogers' }, { value: 'Captain Britain', label: 'Captain Britain' }, { value: 'Captain Cross', label: 'Captain Cross' }, { value: 'Captain Flint', label: 'Captain Flint' }, { value: 'Captain Marvel', label: 'Captain Marvel' }, { value: 'Captain Midlands', label: 'Captain Midlands' }, { value: 'Captain Stacy', label: 'Captain Stacy' }, { value: 'Captain Universe', label: 'Captain Universe' }, { value: 'Cardiac', label: 'Cardiac' }, { value: 'Caretaker', label: 'Caretaker' }, { value: 'Cargill', label: 'Cargill' }, { value: 'Carlie Cooper', label: 'Carlie Cooper' }, { value: 'Carmella Unuscione', label: 'Carmella Unuscione' }, { value: 'Carnage', label: 'Carnage' }, { value: 'Carol Danvers', label: 'Carol Danvers' }, { value: 'Carol Hines', label: 'Carol Hines' }, { value: 'Cassandra Nova', label: 'Cassandra Nova' }, { value: 'Catseye', label: 'Catseye' }, { value: 'Cecilia Reyes', label: 'Cecilia Reyes' }, { value: 'Celestials', label: 'Celestials' }, { value: 'Centennial', label: 'Centennial' }, { value: 'Centurions', label: 'Centurions' }, { value: 'Cerebro', label: 'Cerebro' }, { value: 'Cerise', label: 'Cerise' }, { value: 'Ch\'od', label: 'Ch\'od' }, { value: 'Chamber', label: 'Chamber' }, { value: 'Chameleon', label: 'Chameleon' }, { value: 'Champions', label: 'Champions' }, { value: 'Changeling', label: 'Changeling' }, { value: 'Charles Xavier', label: 'Charles Xavier' }, { value: 'Charlie Campion', label: 'Charlie Campion' }, { value: 'Chase Stein', label: 'Chase Stein' }, { value: 'Chat', label: 'Chat' }, { value: 'Chimera', label: 'Chimera' }, { value: 'Chores MacGillicudy', label: 'Chores MacGillicudy' }, { value: 'Christian Walker', label: 'Christian Walker' }, { value: 'Chronomancer', label: 'Chronomancer' }, { value: 'ClanDestine', label: 'ClanDestine' }, { value: 'Clea', label: 'Clea' }, { value: 'Clint Barton', label: 'Clint Barton' }, { value: 'Cloak', label: 'Cloak' }, { value: 'Cloud 9', label: 'Cloud 9' }, { value: 'Cobalt Man', label: 'Cobalt Man' }, { value: 'Colleen Wing', label: 'Colleen Wing' }, { value: 'Colonel America', label: 'Colonel America' }, { value: 'Colossus', label: 'Colossus' }, { value: 'Confederates of the Curious', label: 'Confederates of the Curious' }, { value: 'Constrictor', label: 'Constrictor' }, { value: 'Contessa', label: 'Contessa' }, { value: 'Controller', label: 'Controller' }, { value: 'Cornelius', label: 'Cornelius' }, { value: 'Corsair', label: 'Corsair' }, { value: 'Cosmo', label: 'Cosmo' }, { value: 'Cottonmouth', label: 'Cottonmouth' }, { value: 'Count Nefaria', label: 'Count Nefaria' }, { value: 'Countess', label: 'Countess' }, { value: 'Crimson Crusader', label: 'Crimson Crusader' }, { value: 'Crimson Dynamo', label: 'Crimson Dynamo' }, { value: 'Crimson King', label: 'Crimson King' }, { value: 'Crossbones', label: 'Crossbones' }, { value: 'Crule', label: 'Crule' }, { value: 'Crusher Hogan', label: 'Crusher Hogan' }, { value: 'Crystal', label: 'Crystal' }, { value: 'Cuckoo', label: 'Cuckoo' }, { value: 'Curt Conners', label: 'Curt Conners' }, { value: 'Cuthbert', label: 'Cuthbert' }, { value: 'Cyber', label: 'Cyber' }, { value: 'Cyclops', label: 'Cyclops' }, { value: 'Cypher', label: 'Cypher' }, { value: 'D\'Ken Neramani', label: 'D\'Ken Neramani' }, { value: 'Dagger', label: 'Dagger' }, { value: 'Daily Bugle', label: 'Daily Bugle' }, { value: 'Daimon Hellstrom', label: 'Daimon Hellstrom' }, { value: 'Daken', label: 'Daken' }, { value: 'Dakota North', label: 'Dakota North' }, { value: 'Damage Control', label: 'Damage Control' }, { value: 'Dani Moonstar', label: 'Dani Moonstar' }, { value: 'Danny Rand', label: 'Danny Rand' }, { value: 'Daredevil', label: 'Daredevil' }, { value: 'Dargo Ktor', label: 'Dargo Ktor' }, { value: 'Dark Avengers', label: 'Dark Avengers' }, { value: 'Dark Beast', label: 'Dark Beast' }, { value: 'Dark Phoenix', label: 'Dark Phoenix' }, { value: 'Dark X-Men', label: 'Dark X-Men' }, { value: 'Darkhawk', label: 'Darkhawk' }, { value: 'Darkstar', label: 'Darkstar' }, { value: 'Darwin', label: 'Darwin' }, { value: 'Dazzler', label: 'Dazzler' }, { value: 'Deacon Frost', label: 'Deacon Frost' }, { value: 'Dead Girl', label: 'Dead Girl' }, { value: 'Deadpool', label: 'Deadpool' }, { value: 'Death', label: 'Death' }, { value: 'Deathbird', label: 'Deathbird' }, { value: 'Deathcry', label: 'Deathcry' }, { value: 'Deathlok', label: 'Deathlok' }, { value: 'Deathstrike', label: 'Deathstrike' }, { value: 'Debra Whitman', label: 'Debra Whitman' }, { value: 'Debrii', label: 'Debrii' }, { value: 'Deena Pilgrim', label: 'Deena Pilgrim' }, { value: 'Defenders', label: 'Defenders' }, { value: 'Demogoblin', label: 'Demogoblin' }, { value: 'Destiny', label: 'Destiny' }, { value: 'Detective Soap', label: 'Detective Soap' }, { value: 'Deviants', label: 'Deviants' }, { value: 'Devil Dinosaur', label: 'Devil Dinosaur' }, { value: 'Devos', label: 'Devos' }, { value: 'Dexter Bennett', label: 'Dexter Bennett' }, { value: 'Diablo', label: 'Diablo' }, { value: 'Diamondback', label: 'Diamondback' }, { value: 'Dinah Soar', label: 'Dinah Soar' }, { value: 'Dirk Anger', label: 'Dirk Anger' }, { value: 'Doc Samson', label: 'Doc Samson' }, { value: 'Doctor Doom', label: 'Doctor Doom' }, { value: 'Doctor Faustus', label: 'Doctor Faustus' }, { value: 'Doctor Octopus', label: 'Doctor Octopus' }, { value: 'Doctor Spectrum', label: 'Doctor Spectrum' }, { value: 'Doctor Strange', label: 'Doctor Strange' }, { value: 'Dog Brother #1', label: 'Dog Brother #1' }, { value: 'Domino', label: 'Domino' }, { value: 'Donald Blake', label: 'Donald Blake' }, { value: 'Doomsday Man', label: 'Doomsday Man' }, { value: 'Doop', label: 'Doop' }, { value: 'Doorman', label: 'Doorman' }, { value: 'Dorian Gray', label: 'Dorian Gray' }, { value: 'Dormammu', label: 'Dormammu' }, { value: 'Dr. Strange', label: 'Dr. Strange' }, { value: 'Dracula', label: 'Dracula' }, { value: 'Dragon Lord', label: 'Dragon Lord' }, { value: 'Dragon Man', label: 'Dragon Man' }, { value: 'Drax', label: 'Drax' }, { value: 'Dreadnoughts', label: 'Dreadnoughts' }, { value: 'Dreaming Celestial', label: 'Dreaming Celestial' }, { value: 'Druig', label: 'Druig' }, { value: 'Dum Dum Dugan', label: 'Dum Dum Dugan' }, { value: 'Dust', label: 'Dust' }, { value: 'Earthquake', label: 'Earthquake' }, { value: 'Echo', label: 'Echo' }, { value: 'Eddie Brock', label: 'Eddie Brock' }, { value: 'Eddie Lau', label: 'Eddie Lau' }, { value: 'Edward \"Ted\" Forrester', label: 'Edward \"Ted\" Forrester' }, { value: 'Edwin Jarvis', label: 'Edwin Jarvis' }, { value: 'Ego', label: 'Ego' }, { value: 'Electro', label: 'Electro' }, { value: 'Elektra', label: 'Elektra' }, { value: 'Elements of Doom', label: 'Elements of Doom' }, { value: 'Elite', label: 'Elite' }, { value: 'Elixir', label: 'Elixir' }, { value: 'Elloe Kaifi', label: 'Elloe Kaifi' }, { value: 'Elsa Bloodstone', label: 'Elsa Bloodstone' }, { value: 'Emma Frost', label: 'Emma Frost' }, { value: 'Empath', label: 'Empath' }, { value: 'Emplate', label: 'Emplate' }, { value: 'Enchantress', label: 'Enchantress' }, { value: 'Ender Wiggin', label: 'Ender Wiggin' }, { value: 'Energizer', label: 'Energizer' }, { value: 'Epoch', label: 'Epoch' }, { value: 'Erik the Red', label: 'Erik the Red' }, { value: 'Eternals', label: 'Eternals' }, { value: 'Eternity', label: 'Eternity' }, { value: 'Excalibur', label: 'Excalibur' }, { value: 'Exiles', label: 'Exiles' }, { value: 'Exodus', label: 'Exodus' }, { value: 'Expediter', label: 'Expediter' }, { value: 'Ezekiel', label: 'Ezekiel' }, { value: 'Ezekiel Stane', label: 'Ezekiel Stane' }, { value: 'Fabian Cortez', label: 'Fabian Cortez' }, { value: 'Falcon', label: 'Falcon' }, { value: 'Falcon/Sam Wilson', label: 'Falcon/Sam Wilson' }, { value: 'Fallen One', label: 'Fallen One' }, { value: 'Famine', label: 'Famine' }, { value: 'Fantastic Four', label: 'Fantastic Four' }, { value: 'Fantastick Four', label: 'Fantastick Four' }, { value: 'Fantomex', label: 'Fantomex' }, { value: 'Fat Cobra', label: 'Fat Cobra' }, { value: 'Felicia Hardy', label: 'Felicia Hardy' }, { value: 'Fenris', label: 'Fenris' }, { value: 'Feral', label: 'Feral' }, { value: 'Fin Fang Foom', label: 'Fin Fang Foom' }, { value: 'Firebird', label: 'Firebird' }, { value: 'Firebrand', label: 'Firebrand' }, { value: 'Firedrake', label: 'Firedrake' }, { value: 'Firelord', label: 'Firelord' }, { value: 'Firestar', label: 'Firestar' }, { value: 'Fixer', label: 'Fixer' }, { value: 'Flatman', label: 'Flatman' }, { value: 'Flying Dutchman', label: 'Flying Dutchman' }, { value: 'Foggy Nelson', label: 'Foggy Nelson' }, { value: 'Force Works', label: 'Force Works' }, { value: 'Forearm', label: 'Forearm' }, { value: 'Forge', label: 'Forge' }, { value: 'Forgotten One', label: 'Forgotten One' }, { value: 'Frank Castle', label: 'Frank Castle' }, { value: 'Frankenstein\'s Monster', label: 'Frankenstein\'s Monster' }, { value: 'Franklin Richards', label: 'Franklin Richards' }, { value: 'Franklin Storm', label: 'Franklin Storm' }, { value: 'Freak', label: 'Freak' }, { value: 'Frightful Four', label: 'Frightful Four' }, { value: 'Frog Thor', label: 'Frog Thor' }, { value: 'Frog-Man', label: 'Frog-Man' }, { value: 'Gabe Jones', label: 'Gabe Jones' }, { value: 'Galactus', label: 'Galactus' }, { value: 'Galia', label: 'Galia' }, { value: 'Gambit', label: 'Gambit' }, { value: 'Gamma Corps', label: 'Gamma Corps' }, { value: 'Gamora', label: 'Gamora' }, { value: 'Gargoyle', label: 'Gargoyle' }, { value: 'Garia', label: 'Garia' }, { value: 'Garrison Kane', label: 'Garrison Kane' }, { value: 'Gateway', label: 'Gateway' }, { value: 'Gauntlet', label: 'Gauntlet' }, { value: 'Geiger', label: 'Geiger' }, { value: 'Gene Sailors', label: 'Gene Sailors' }, { value: 'Generation X', label: 'Generation X' }, { value: 'Genesis', label: 'Genesis' }, { value: 'Genis-Vell', label: 'Genis-Vell' }, { value: 'George Stacy', label: 'George Stacy' }, { value: 'Gertrude Yorkes', label: 'Gertrude Yorkes' }, { value: 'Ghost Rider', label: 'Ghost Rider' }, { value: 'Giant Girl', label: 'Giant Girl' }, { value: 'Giant Man', label: 'Giant Man' }, { value: 'Giant-dok', label: 'Giant-dok' }, { value: 'Giant-Man', label: 'Giant-Man' }, { value: 'Gideon', label: 'Gideon' }, { value: 'Git Hoskins', label: 'Git Hoskins' }, { value: 'Gladiator', label: 'Gladiator' }, { value: 'Glenn Talbot', label: 'Glenn Talbot' }, { value: 'Glorian', label: 'Glorian' }, { value: 'Goblin Queen', label: 'Goblin Queen' }, { value: 'Golden Guardian', label: 'Golden Guardian' }, { value: 'Goliath', label: 'Goliath' }, { value: 'Gorgon', label: 'Gorgon' }, { value: 'Gorilla Man', label: 'Gorilla Man' }, { value: 'Grandmaster', label: 'Grandmaster' }, { value: 'Gravity', label: 'Gravity' }, { value: 'Great Lakes Avengers', label: 'Great Lakes Avengers' }, { value: 'Green Goblin', label: 'Green Goblin' }, { value: 'Gressill', label: 'Gressill' }, { value: 'Grey Gargoyle', label: 'Grey Gargoyle' }, { value: 'Greymalkin', label: 'Greymalkin' }, { value: 'Grim Reaper', label: 'Grim Reaper' }, { value: 'Groot', label: 'Groot' }, { value: 'Guardian', label: 'Guardian' }, { value: 'Guardians of the Galaxy', label: 'Guardians of the Galaxy' }, { value: 'Guardsmen', label: 'Guardsmen' }, { value: 'Gunslinger', label: 'Gunslinger' }, { value: 'GW Bridge', label: 'GW Bridge' }, { value: 'Gwen Stacy', label: 'Gwen Stacy' }, { value: 'H.A.M.M.E.R.', label: 'H.A.M.M.E.R.' }, { value: 'H.E.R.B.I.E.', label: 'H.E.R.B.I.E.' }, { value: 'Hairball', label: 'Hairball' }, { value: 'Half-Life', label: 'Half-Life' }, { value: 'Hammerhead', label: 'Hammerhead' }, { value: 'Hank Pym', label: 'Hank Pym' }, { value: 'Hannibal King', label: 'Hannibal King' }, { value: 'Happy Hogan', label: 'Happy Hogan' }, { value: 'Hardball', label: 'Hardball' }, { value: 'Harley Davidson Cooper', label: 'Harley Davidson Cooper' }, { value: 'Harpoon', label: 'Harpoon' }, { value: 'Harrier', label: 'Harrier' }, { value: 'Harry Heck', label: 'Harry Heck' }, { value: 'Harry Osborn', label: 'Harry Osborn' }, { value: 'Hate-Monger', label: 'Hate-Monger' }, { value: 'Havok', label: 'Havok' }, { value: 'Hawkeye', label: 'Hawkeye' }, { value: 'Hawkeye/Clint Barton', label: 'Hawkeye/Clint Barton' }, { value: 'Hedge Knight', label: 'Hedge Knight' }, { value: 'Hellcat', label: 'Hellcat' }, { value: 'Hellfire Club', label: 'Hellfire Club' }, { value: 'Hellion', label: 'Hellion' }, { value: 'Hellions', label: 'Hellions' }, { value: 'Hemingway', label: 'Hemingway' }, { value: 'Henry Peter Gyrich', label: 'Henry Peter Gyrich' }, { value: 'Hepzibah', label: 'Hepzibah' }, { value: 'Hercules', label: 'Hercules' }, { value: 'Heroes For Hire', label: 'Heroes For Hire' }, { value: 'Hex', label: 'Hex' }, { value: 'High Evolutionary', label: 'High Evolutionary' }, { value: 'Hindsight Lad', label: 'Hindsight Lad' }, { value: 'Hiroim', label: 'Hiroim' }, { value: 'Hitman', label: 'Hitman' }, { value: 'Hitomi Sakuma', label: 'Hitomi Sakuma' }, { value: 'Hobgoblin', label: 'Hobgoblin' }, { value: 'Holocaust', label: 'Holocaust' }, { value: 'Holy', label: 'Holy' }, { value: 'Hope Summers', label: 'Hope Summers' }, { value: 'Howard Saint', label: 'Howard Saint' }, { value: 'Howard The Duck', label: 'Howard The Duck' }, { value: 'Hulk', label: 'Hulk' }, { value: 'Hulk-dok', label: 'Hulk-dok' }, { value: 'Hulk/Bruce Banner', label: 'Hulk/Bruce Banner' }, { value: 'Hulkling', label: 'Hulkling' }, { value: 'Human Cannonball', label: 'Human Cannonball' }, { value: 'Human Fly', label: 'Human Fly' }, { value: 'Human Robot', label: 'Human Robot' }, { value: 'Human Torch', label: 'Human Torch' }, { value: 'Humbug', label: 'Humbug' }, { value: 'Husk', label: 'Husk' }, { value: 'Hussar', label: 'Hussar' }, { value: 'Hydra', label: 'Hydra' }, { value: 'Hydro-Man', label: 'Hydro-Man' }, { value: 'Hyperion', label: 'Hyperion' }, { value: 'Hypno-Hustler', label: 'Hypno-Hustler' }, { value: 'Iceman', label: 'Iceman' }, { value: 'Ikaris', label: 'Ikaris' }, { value: 'Illuminati', label: 'Illuminati' }, { value: 'Ilyana Rasputin', label: 'Ilyana Rasputin' }, { value: 'Imp', label: 'Imp' }, { value: 'Imperfects', label: 'Imperfects' }, { value: 'Imperial Guard', label: 'Imperial Guard' }, { value: 'Impossible Man', label: 'Impossible Man' }, { value: 'In-Betweener', label: 'In-Betweener' }, { value: 'Inertia', label: 'Inertia' }, { value: 'Infant Terrible', label: 'Infant Terrible' }, { value: 'Inhumans', label: 'Inhumans' }, { value: 'Ink', label: 'Ink' }, { value: 'Invaders', label: 'Invaders' }, { value: 'Invisible Woman', label: 'Invisible Woman' }, { value: 'Iron Cross Army', label: 'Iron Cross Army' }, { value: 'Iron Fist', label: 'Iron Fist' }, { value: 'Iron Lad', label: 'Iron Lad' }, { value: 'Iron Man', label: 'Iron Man' }, { value: 'Iron Man/Tony Stark', label: 'Iron Man/Tony Stark' }, { value: 'Iron Monger', label: 'Iron Monger' }, { value: 'Iron Patriot', label: 'Iron Patriot' }, { value: 'Ironclad', label: 'Ironclad' }, { value: 'J. Jonah Jameson', label: 'J. Jonah Jameson' }, { value: 'Jack Flag', label: 'Jack Flag' }, { value: 'Jack Murdock', label: 'Jack Murdock' }, { value: 'Jack O\' Lantern', label: 'Jack O\' Lantern' }, { value: 'Jack Power', label: 'Jack Power' }, { value: 'Jackal', label: 'Jackal' }, { value: 'Jackpot', label: 'Jackpot' }, { value: 'James Buchanan Barnes', label: 'James Buchanan Barnes' }, { value: 'James Howlett', label: 'James Howlett' }, { value: 'Jamie Braddock', label: 'Jamie Braddock' }, { value: 'Jane Foster', label: 'Jane Foster' }, { value: 'Janus, the Nega-Man', label: 'Janus, the Nega-Man' }, { value: 'Jasper Sitwell', label: 'Jasper Sitwell' }, { value: 'Jazinda', label: 'Jazinda' }, { value: 'Jean Grey', label: 'Jean Grey' }, { value: 'Jennifer Smith', label: 'Jennifer Smith' }, { value: 'Jeryn Hogarth', label: 'Jeryn Hogarth' }, { value: 'Jessica Drew', label: 'Jessica Drew' }, { value: 'Jessica Jones', label: 'Jessica Jones' }, { value: 'Jetstream', label: 'Jetstream' }, { value: 'Jigsaw', label: 'Jigsaw' }, { value: 'Jimmy Woo', label: 'Jimmy Woo' }, { value: 'Joan the Mouse', label: 'Joan the Mouse' }, { value: 'Jocasta', label: 'Jocasta' }, { value: 'John Farson', label: 'John Farson' }, { value: 'John Jameson', label: 'John Jameson' }, { value: 'John Porter', label: 'John Porter' }, { value: 'John Wraith', label: 'John Wraith' }, { value: 'Johnny Blaze', label: 'Johnny Blaze' }, { value: 'Johnny Storm', label: 'Johnny Storm' }, { value: 'Joseph', label: 'Joseph' }, { value: 'Joshua Kane', label: 'Joshua Kane' }, { value: 'Josiah X', label: 'Josiah X' }, { value: 'Joystick', label: 'Joystick' }, { value: 'Jubilee', label: 'Jubilee' }, { value: 'Juggernaut', label: 'Juggernaut' }, { value: 'Jule Carpenter', label: 'Jule Carpenter' }, { value: 'Julian Keller', label: 'Julian Keller' }, { value: 'Junta', label: 'Junta' }, { value: 'Justice', label: 'Justice' }, { value: 'Justin Hammer', label: 'Justin Hammer' }, { value: 'Ka-Zar', label: 'Ka-Zar' }, { value: 'Kabuki', label: 'Kabuki' }, { value: 'Kang', label: 'Kang' }, { value: 'Karen O\'Malley', label: 'Karen O\'Malley' }, { value: 'Karen Page', label: 'Karen Page' }, { value: 'Karma', label: 'Karma' }, { value: 'Karnak', label: 'Karnak' }, { value: 'Karolina Dean ', label: 'Karolina Dean ' }, { value: 'Kat Farrell', label: 'Kat Farrell' }, { value: 'Kate Bishop', label: 'Kate Bishop' }, { value: 'Katie Power', label: 'Katie Power' }, { value: 'Ken Ellis', label: 'Ken Ellis' }, { value: 'Khan', label: 'Khan' }, { value: 'Kid Colt', label: 'Kid Colt' }, { value: 'Killer Shrike', label: 'Killer Shrike' }, { value: 'Killmonger', label: 'Killmonger' }, { value: 'Killraven', label: 'Killraven' }, { value: 'King Bedlam', label: 'King Bedlam' }, { value: 'King Cobra', label: 'King Cobra' }, { value: 'Kingpin', label: 'Kingpin' }, { value: 'Kinsey Walden', label: 'Kinsey Walden' }, { value: 'Kitty Pryde', label: 'Kitty Pryde' }, { value: 'Klaw', label: 'Klaw' }, { value: 'Komodo', label: 'Komodo' }, { value: 'Korath', label: 'Korath' }, { value: 'Korg', label: 'Korg' }, { value: 'Korvac', label: 'Korvac' }, { value: 'Kraven the Hunter', label: 'Kraven the Hunter' }, { value: 'Kree', label: 'Kree' }, { value: 'Krista Starr', label: 'Krista Starr' }, { value: 'Kronos', label: 'Kronos' }, { value: 'Kulan Gath', label: 'Kulan Gath' }, { value: 'Kylun', label: 'Kylun' }, { value: 'La Nuit', label: 'La Nuit' }, { value: 'Lady Bullseye', label: 'Lady Bullseye' }, { value: 'Lady Deathstrike', label: 'Lady Deathstrike' }, { value: 'Lady Mastermind', label: 'Lady Mastermind' }, { value: 'Lady Ursula', label: 'Lady Ursula' }, { value: 'Lady Vermin', label: 'Lady Vermin' }, { value: 'Lake', label: 'Lake' }, { value: 'Landau', label: 'Landau' }, { value: 'Lava-Man', label: 'Lava-Man' }, { value: 'Layla Miller', label: 'Layla Miller' }, { value: 'Leader', label: 'Leader' }, { value: 'Leech', label: 'Leech' }, { value: 'Legion', label: 'Legion' }, { value: 'Lei Kung, The Thunderer', label: 'Lei Kung, The Thunderer' }, { value: 'Lenny Balinger', label: 'Lenny Balinger' }, { value: 'Leo', label: 'Leo' }, { value: 'Leopardon', label: 'Leopardon' }, { value: 'Leper Queen', label: 'Leper Queen' }, { value: 'Lester', label: 'Lester' }, { value: 'Lethal Legion', label: 'Lethal Legion' }, { value: 'Lieutenant Marcus Stone', label: 'Lieutenant Marcus Stone' }, { value: 'Lifeguard', label: 'Lifeguard' }, { value: 'Lightning Lords of Nepal', label: 'Lightning Lords of Nepal' }, { value: 'Lightspeed', label: 'Lightspeed' }, { value: 'Lila Cheney', label: 'Lila Cheney' }, { value: 'Lilandra', label: 'Lilandra' }, { value: 'Lilith', label: 'Lilith' }, { value: 'Lily Hollister', label: 'Lily Hollister' }, { value: 'Lionheart', label: 'Lionheart' }, { value: 'Living Lightning', label: 'Living Lightning' }, { value: 'Living Mummy', label: 'Living Mummy' }, { value: 'Living Tribunal', label: 'Living Tribunal' }, { value: 'Liz Osborn', label: 'Liz Osborn' }, { value: 'Lizard', label: 'Lizard' }, { value: 'Loa', label: 'Loa' }, { value: 'Lockheed', label: 'Lockheed' }, { value: 'Lockjaw', label: 'Lockjaw' }, { value: 'Logan', label: 'Logan' }, { value: 'Loki', label: 'Loki' }, { value: 'Loners', label: 'Loners' }, { value: 'Longshot', label: 'Longshot' }, { value: 'Lord Hawal', label: 'Lord Hawal' }, { value: 'Lord Tyger', label: 'Lord Tyger' }, { value: 'Lords of Avalon', label: 'Lords of Avalon' }, { value: 'Lorna Dane', label: 'Lorna Dane' }, { value: 'Luckman', label: 'Luckman' }, { value: 'Lucky Pierre', label: 'Lucky Pierre' }, { value: 'Lucy in the Sky', label: 'Lucy in the Sky' }, { value: 'Luke Cage', label: 'Luke Cage' }, { value: 'Luminals', label: 'Luminals' }, { value: 'Lyja', label: 'Lyja' }, { value: 'M', label: 'M' }, { value: 'M.O.D.A.M.', label: 'M.O.D.A.M.' }, { value: 'M.O.D.O.G.', label: 'M.O.D.O.G.' }, { value: 'M.O.D.O.K.', label: 'M.O.D.O.K.' }, { value: 'Ma Gnuci', label: 'Ma Gnuci' }, { value: 'Mac Gargan', label: 'Mac Gargan' }, { value: 'Mach IV', label: 'Mach IV' }, { value: 'Machine Man', label: 'Machine Man' }, { value: 'Mad Thinker', label: 'Mad Thinker' }, { value: 'Madame Hydra', label: 'Madame Hydra' }, { value: 'Madame Masque', label: 'Madame Masque' }, { value: 'Madame Web', label: 'Madame Web' }, { value: 'Maddog', label: 'Maddog' }, { value: 'Madelyne Pryor', label: 'Madelyne Pryor' }, { value: 'Madripoor', label: 'Madripoor' }, { value: 'Madrox', label: 'Madrox' }, { value: 'Maelstrom', label: 'Maelstrom' }, { value: 'Maestro', label: 'Maestro' }, { value: 'Magdalene', label: 'Magdalene' }, { value: 'Maggott', label: 'Maggott' }, { value: 'Magik', label: 'Magik' }, { value: 'Maginty', label: 'Maginty' }, { value: 'Magma', label: 'Magma' }, { value: 'Magneto', label: 'Magneto' }, { value: 'Magus', label: 'Magus' }, { value: 'Major Mapleleaf', label: 'Major Mapleleaf' }, { value: 'Makkari', label: 'Makkari' }, { value: 'Malcolm Colcord', label: 'Malcolm Colcord' }, { value: 'Malice', label: 'Malice' }, { value: 'Man-Thing', label: 'Man-Thing' }, { value: 'Man-Wolf', label: 'Man-Wolf' }, { value: 'Mandarin', label: 'Mandarin' }, { value: 'Mandrill', label: 'Mandrill' }, { value: 'Mandroid', label: 'Mandroid' }, { value: 'Manta', label: 'Manta' }, { value: 'Mantis', label: 'Mantis' }, { value: 'Marauders', label: 'Marauders' }, { value: 'Marcus Van Sciver', label: 'Marcus Van Sciver' }, { value: 'Maria Hill', label: 'Maria Hill' }, { value: 'Mariko Yashida', label: 'Mariko Yashida' }, { value: 'Marrow', label: 'Marrow' }, { value: 'Marten Broadcloak', label: 'Marten Broadcloak' }, { value: 'Martin Li', label: 'Martin Li' }, { value: 'Marvel Apes', label: 'Marvel Apes' }, { value: 'Marvel Boy', label: 'Marvel Boy' }, { value: 'Marvel Zombies', label: 'Marvel Zombies' }, { value: 'Marvex', label: 'Marvex' }, { value: 'Mary Jane Watson', label: 'Mary Jane Watson' }, { value: 'Masked Marvel', label: 'Masked Marvel' }, { value: 'Masque', label: 'Masque' }, { value: 'Master Chief', label: 'Master Chief' }, { value: 'Master Mold', label: 'Master Mold' }, { value: 'Mastermind', label: 'Mastermind' }, { value: 'Masters of Evil', label: 'Masters of Evil' }, { value: 'Mathemanic', label: 'Mathemanic' }, { value: 'Matsu\'o Tsurayaba', label: 'Matsu\'o Tsurayaba' }, { value: 'Matthew Murdock', label: 'Matthew Murdock' }, { value: 'Mattie Franklin', label: 'Mattie Franklin' }, { value: 'Mauler', label: 'Mauler' }, { value: 'Maverick', label: 'Maverick' }, { value: 'Maximus', label: 'Maximus' }, { value: 'May Parker', label: 'May Parker' }, { value: 'Medusa', label: 'Medusa' }, { value: 'Meggan', label: 'Meggan' }, { value: 'Meltdown', label: 'Meltdown' }, { value: 'Menace', label: 'Menace' }, { value: 'Mentallo', label: 'Mentallo' }, { value: 'Mentor', label: 'Mentor' }, { value: 'Mephisto', label: 'Mephisto' }, { value: 'Mephistopheles', label: 'Mephistopheles' }, { value: 'Mercury', label: 'Mercury' }, { value: 'Mesmero', label: 'Mesmero' }, { value: 'Metal Master', label: 'Metal Master' }, { value: 'Meteorite', label: 'Meteorite' }, { value: 'MI: 13', label: 'MI: 13' }, { value: 'Micro/Macro', label: 'Micro/Macro' }, { value: 'Microbe', label: 'Microbe' }, { value: 'Microchip', label: 'Microchip' }, { value: 'Micromax', label: 'Micromax' }, { value: 'Midnight', label: 'Midnight' }, { value: 'Miek', label: 'Miek' }, { value: 'Mikhail Rasputin', label: 'Mikhail Rasputin' }, { value: 'Millenium Guard', label: 'Millenium Guard' }, { value: 'Millie the Model', label: 'Millie the Model' }, { value: 'Mimic', label: 'Mimic' }, { value: 'Mindworm', label: 'Mindworm' }, { value: 'Miracleman', label: 'Miracleman' }, { value: 'Miss America', label: 'Miss America' }, { value: 'Mister Fear', label: 'Mister Fear' }, { value: 'Mister Sinister', label: 'Mister Sinister' }, { value: 'Misty Knight', label: 'Misty Knight' }, { value: 'Mockingbird', label: 'Mockingbird' }, { value: 'Moira MacTaggert', label: 'Moira MacTaggert' }, { value: 'Mojo', label: 'Mojo' }, { value: 'Mole Man', label: 'Mole Man' }, { value: 'Molecule Man', label: 'Molecule Man' }, { value: 'Molly Hayes', label: 'Molly Hayes' }, { value: 'Molly Von Richtofen', label: 'Molly Von Richtofen' }, { value: 'Molten Man', label: 'Molten Man' }, { value: 'Mongoose', label: 'Mongoose' }, { value: 'Mongu', label: 'Mongu' }, { value: 'Monster Badoon', label: 'Monster Badoon' }, { value: 'Moon Knight', label: 'Moon Knight' }, { value: 'Moondragon', label: 'Moondragon' }, { value: 'Moonstone', label: 'Moonstone' }, { value: 'Morbius', label: 'Morbius' }, { value: 'Mordo', label: 'Mordo' }, { value: 'Morg', label: 'Morg' }, { value: 'Morgan Stark', label: 'Morgan Stark' }, { value: 'Morlocks', label: 'Morlocks' }, { value: 'Morlun', label: 'Morlun' }, { value: 'Morph', label: 'Morph' }, { value: 'Mother Askani', label: 'Mother Askani' }, { value: 'Mr. Bumpo', label: 'Mr. Bumpo' }, { value: 'Mr. Fantastic', label: 'Mr. Fantastic' }, { value: 'Mr. Fish', label: 'Mr. Fish' }, { value: 'Mr. Fixit', label: 'Mr. Fixit' }, { value: 'Mr. Hyde', label: 'Mr. Hyde' }, { value: 'Mr. Immortal', label: 'Mr. Immortal' }, { value: 'Mr. Meugniot', label: 'Mr. Meugniot' }, { value: 'Mr. Negative', label: 'Mr. Negative' }, { value: 'Mr. Payback', label: 'Mr. Payback' }, { value: 'Mr. X', label: 'Mr. X' }, { value: 'MS2', label: 'MS2' }, { value: 'Ms. Marvel', label: 'Ms. Marvel' }, { value: 'Mulholland Black', label: 'Mulholland Black' }, { value: 'Multiple Man', label: 'Multiple Man' }, { value: 'MVP', label: 'MVP' }, { value: 'Mysterio', label: 'Mysterio' }, { value: 'Mystique', label: 'Mystique' }, { value: 'Namor', label: 'Namor' }, { value: 'Namora', label: 'Namora' }, { value: 'Namorita', label: 'Namorita' }, { value: 'Naoko', label: 'Naoko' }, { value: 'Natasha Romanoff', label: 'Natasha Romanoff' }, { value: 'Nebula', label: 'Nebula' }, { value: 'Nehzno', label: 'Nehzno' }, { value: 'Nekra', label: 'Nekra' }, { value: 'Nemesis', label: 'Nemesis' }, { value: 'Network', label: 'Network' }, { value: 'New Goblin', label: 'New Goblin' }, { value: 'New Mutants', label: 'New Mutants' }, { value: 'New Warriors', label: 'New Warriors' }, { value: 'New X-Men', label: 'New X-Men' }, { value: 'Newton Destine', label: 'Newton Destine' }, { value: 'Next Avengers', label: 'Next Avengers' }, { value: 'Nextwave', label: 'Nextwave' }, { value: 'Nick Fury', label: 'Nick Fury' }, { value: 'Nico Minoru', label: 'Nico Minoru' }, { value: 'Nicolaos', label: 'Nicolaos' }, { value: 'Night Nurse', label: 'Night Nurse' }, { value: 'Night Thrasher', label: 'Night Thrasher' }, { value: 'Nightcrawler', label: 'Nightcrawler' }, { value: 'Nighthawk', label: 'Nighthawk' }, { value: 'Nightmare', label: 'Nightmare' }, { value: 'Nightshade', label: 'Nightshade' }, { value: 'Nine-Fold Daughters of Xao', label: 'Nine-Fold Daughters of Xao' }, { value: 'Nitro', label: 'Nitro' }, { value: 'Nocturne', label: 'Nocturne' }, { value: 'Nomad', label: 'Nomad' }, { value: 'Norman Osborn', label: 'Norman Osborn' }, { value: 'Norrin Radd', label: 'Norrin Radd' }, { value: 'Northstar', label: 'Northstar' }, { value: 'Nova', label: 'Nova' }, { value: 'Nuke', label: 'Nuke' }, { value: 'Obadiah Stane', label: 'Obadiah Stane' }, { value: 'Odin', label: 'Odin' }, { value: 'Ogun', label: 'Ogun' }, { value: 'Old Lace', label: 'Old Lace' }, { value: 'Omega Flight', label: 'Omega Flight' }, { value: 'Omega Red', label: 'Omega Red' }, { value: 'Omega Sentinel', label: 'Omega Sentinel' }, { value: 'Omega the Unknown', label: 'Omega the Unknown' }, { value: 'Onslaught', label: 'Onslaught' }, { value: 'Oracle', label: 'Oracle' }, { value: 'Ord', label: 'Ord' }, { value: 'Orphan', label: 'Orphan' }, { value: 'Orphan-Maker', label: 'Orphan-Maker' }, { value: 'Otto Octavius', label: 'Otto Octavius' }, { value: 'Outlaw Kid', label: 'Outlaw Kid' }, { value: 'Overlord', label: 'Overlord' }, { value: 'Owl', label: 'Owl' }, { value: 'Ozymandias', label: 'Ozymandias' }, { value: 'Paibok', label: 'Paibok' }, { value: 'Paladin', label: 'Paladin' }, { value: 'Pandemic', label: 'Pandemic' }, { value: 'Paper Doll', label: 'Paper Doll' }, { value: 'Patch', label: 'Patch' }, { value: 'Patriot', label: 'Patriot' }, { value: 'Payback', label: 'Payback' }, { value: 'Penance', label: 'Penance' }, { value: 'Pepper Potts', label: 'Pepper Potts' }, { value: 'Pestilence', label: 'Pestilence' }, { value: 'Pet Avengers', label: 'Pet Avengers' }, { value: 'Pete Wisdom', label: 'Pete Wisdom' }, { value: 'Peter Parker', label: 'Peter Parker' }, { value: 'Peter Quill', label: 'Peter Quill' }, { value: 'Phalanx', label: 'Phalanx' }, { value: 'Phantom Reporter', label: 'Phantom Reporter' }, { value: 'Phil Sheldon', label: 'Phil Sheldon' }, { value: 'Photon', label: 'Photon' }, { value: 'Phyla-Vell', label: 'Phyla-Vell' }, { value: 'Piledriver', label: 'Piledriver' }, { value: 'Pip', label: 'Pip' }, { value: 'Pixie', label: 'Pixie' }, { value: 'Plazm', label: 'Plazm' }, { value: 'Polaris', label: 'Polaris' }, { value: 'Post', label: 'Post' }, { value: 'Power Man', label: 'Power Man' }, { value: 'Power Pack', label: 'Power Pack' }, { value: 'Praxagora', label: 'Praxagora' }, { value: 'Preak', label: 'Preak' }, { value: 'Pretty Boy', label: 'Pretty Boy' }, { value: 'Pride', label: 'Pride' }, { value: 'Prima', label: 'Prima' }, { value: 'Prince of Orphans', label: 'Prince of Orphans' }, { value: 'Princess Powerful', label: 'Princess Powerful' }, { value: 'Prism', label: 'Prism' }, { value: 'Prodigy', label: 'Prodigy' }, { value: 'Proemial Gods', label: 'Proemial Gods' }, { value: 'Professor Monster', label: 'Professor Monster' }, { value: 'Professor X', label: 'Professor X' }, { value: 'Proteus', label: 'Proteus' }, { value: 'Proudstar', label: 'Proudstar' }, { value: 'Prowler', label: 'Prowler' }, { value: 'Psycho-Man', label: 'Psycho-Man' }, { value: 'Psylocke', label: 'Psylocke' }, { value: 'PsyNapse', label: 'PsyNapse' }, { value: 'Puck', label: 'Puck' }, { value: 'Puff Adder', label: 'Puff Adder' }, { value: 'pug', label: 'pug' }, { value: 'Puma', label: 'Puma' }, { value: 'Punisher', label: 'Punisher' }, { value: 'Puppet Master', label: 'Puppet Master' }, { value: 'Purifiers', label: 'Purifiers' }, { value: 'Purple Man', label: 'Purple Man' }, { value: 'Pyro', label: 'Pyro' }, { value: 'Quasar', label: 'Quasar' }, { value: 'Quasimodo', label: 'Quasimodo' }, { value: 'Queen Noir', label: 'Queen Noir' }, { value: 'Quentin Quire', label: 'Quentin Quire' }, { value: 'Quicksilver', label: 'Quicksilver' }, { value: 'Rachel Grey', label: 'Rachel Grey' }, { value: 'Radioactive Man', label: 'Radioactive Man' }, { value: 'Rafael Vega', label: 'Rafael Vega' }, { value: 'Rage', label: 'Rage' }, { value: 'Raider', label: 'Raider' }, { value: 'Randall', label: 'Randall' }, { value: 'Randall Flagg', label: 'Randall Flagg' }, { value: 'Random', label: 'Random' }, { value: 'Rattler', label: 'Rattler' }, { value: 'Ravenous', label: 'Ravenous' }, { value: 'Rawhide Kid', label: 'Rawhide Kid' }, { value: 'Raza', label: 'Raza' }, { value: 'Reaper', label: 'Reaper' }, { value: 'Reavers', label: 'Reavers' }, { value: 'Red 9', label: 'Red 9' }, { value: 'Red Ghost', label: 'Red Ghost' }, { value: 'Red Hulk', label: 'Red Hulk' }, { value: 'Red She-Hulk', label: 'Red She-Hulk' }, { value: 'Red Shift', label: 'Red Shift' }, { value: 'Red Skull', label: 'Red Skull' }, { value: 'Red Wolf', label: 'Red Wolf' }, { value: 'Redwing', label: 'Redwing' }, { value: 'Reptil', label: 'Reptil' }, { value: 'Retro Girl', label: 'Retro Girl' }, { value: 'Revanche', label: 'Revanche' }, { value: 'Rhino', label: 'Rhino' }, { value: 'Rhodey', label: 'Rhodey' }, { value: 'Richard Fisk', label: 'Richard Fisk' }, { value: 'Rick Jones', label: 'Rick Jones' }, { value: 'Ricochet', label: 'Ricochet' }, { value: 'Rictor', label: 'Rictor' }, { value: 'Riptide', label: 'Riptide' }, { value: 'Risque', label: 'Risque' }, { value: 'Robbie Robertson', label: 'Robbie Robertson' }, { value: 'Robert Baldwin ', label: 'Robert Baldwin ' }, { value: 'Robin Chapel', label: 'Robin Chapel' }, { value: 'Rocket Raccoon', label: 'Rocket Raccoon' }, { value: 'Rocket Racer', label: 'Rocket Racer' }, { value: 'Rockslide', label: 'Rockslide' }, { value: 'Rogue', label: 'Rogue' }, { value: 'Roland Deschain', label: 'Roland Deschain' }, { value: 'Romulus', label: 'Romulus' }, { value: 'Ronan', label: 'Ronan' }, { value: 'Roughhouse', label: 'Roughhouse' }, { value: 'Roulette', label: 'Roulette' }, { value: 'Roxanne Simpson', label: 'Roxanne Simpson' }, { value: 'Rumiko Fujikawa', label: 'Rumiko Fujikawa' }, { value: 'Runaways', label: 'Runaways' }, { value: 'Russian', label: 'Russian' }, { value: 'S.H.I.E.L.D.', label: 'S.H.I.E.L.D.' }, { value: 'Sabra', label: 'Sabra' }, { value: 'Sabretooth', label: 'Sabretooth' }, { value: 'Sage', label: 'Sage' }, { value: 'Salem\'s Seven', label: 'Salem\'s Seven' }, { value: 'Sally Floyd', label: 'Sally Floyd' }, { value: 'Salo', label: 'Salo' }, { value: 'Sandman', label: 'Sandman' }, { value: 'Santa Claus', label: 'Santa Claus' }, { value: 'Saracen', label: 'Saracen' }, { value: 'Sasquatch', label: 'Sasquatch' }, { value: 'Satana', label: 'Satana' }, { value: 'Sauron', label: 'Sauron' }, { value: 'Scalphunter', label: 'Scalphunter' }, { value: 'Scarecrow', label: 'Scarecrow' }, { value: 'Scarlet Spider', label: 'Scarlet Spider' }, { value: 'Scarlet Witch', label: 'Scarlet Witch' }, { value: 'Scorpion', label: 'Scorpion' }, { value: 'Scourge', label: 'Scourge' }, { value: 'Scrambler', label: 'Scrambler' }, { value: 'Scream', label: 'Scream' }, { value: 'Screwball', label: 'Screwball' }, { value: 'Sebastian Shaw', label: 'Sebastian Shaw' }, { value: 'Secret Warriors', label: 'Secret Warriors' }, { value: 'Selene', label: 'Selene' }, { value: 'Senator Kelly', label: 'Senator Kelly' }, { value: 'Sentinel', label: 'Sentinel' }, { value: 'Sentinels', label: 'Sentinels' }, { value: 'Sentry', label: 'Sentry' }, { value: 'Ser Duncan', label: 'Ser Duncan' }, { value: 'Serpent Society', label: 'Serpent Society' }, { value: 'Sersi', label: 'Sersi' }, { value: 'Shadow King', label: 'Shadow King' }, { value: 'Shadowcat', label: 'Shadowcat' }, { value: 'Shadu the Shady', label: 'Shadu the Shady' }, { value: 'Shalla-bal', label: 'Shalla-bal' }, { value: 'Shaman', label: 'Shaman' }, { value: 'Shane Yamada-Jones', label: 'Shane Yamada-Jones' }, { value: 'Shang-Chi', label: 'Shang-Chi' }, { value: 'Shanna the She-Devil', label: 'Shanna the She-Devil' }, { value: 'Shape', label: 'Shape' }, { value: 'Shard', label: 'Shard' }, { value: 'Sharon Carter', label: 'Sharon Carter' }, { value: 'Sharon Ventura', label: 'Sharon Ventura' }, { value: 'Shatterstar', label: 'Shatterstar' }, { value: 'She-Hulk', label: 'She-Hulk' }, { value: 'Shen', label: 'Shen' }, { value: 'Sheva Callister', label: 'Sheva Callister' }, { value: 'Shi\'Ar', label: 'Shi\'Ar' }, { value: 'Shinko Yamashiro', label: 'Shinko Yamashiro' }, { value: 'Shinobi Shaw', label: 'Shinobi Shaw' }, { value: 'Shiva', label: 'Shiva' }, { value: 'Shiver Man', label: 'Shiver Man' }, { value: 'Shocker', label: 'Shocker' }, { value: 'Shockwave', label: 'Shockwave' }, { value: 'Shooting Star', label: 'Shooting Star' }, { value: 'Shotgun', label: 'Shotgun' }, { value: 'Shriek', label: 'Shriek' }, { value: 'Sif', label: 'Sif' }, { value: 'Silhouette', label: 'Silhouette' }, { value: 'Silk Fever', label: 'Silk Fever' }, { value: 'Silver Centurion', label: 'Silver Centurion' }, { value: 'Silver Fox', label: 'Silver Fox' }, { value: 'Silver Sable', label: 'Silver Sable' }, { value: 'Silver Samurai', label: 'Silver Samurai' }, { value: 'Silver Surfer', label: 'Silver Surfer' }, { value: 'Silverclaw', label: 'Silverclaw' }, { value: 'Silvermane', label: 'Silvermane' }, { value: 'Sin', label: 'Sin' }, { value: 'Sinister Six', label: 'Sinister Six' }, { value: 'Sir Ram', label: 'Sir Ram' }, { value: 'Siren', label: 'Siren' }, { value: 'Sister Grimm', label: 'Sister Grimm' }, { value: 'Skaar', label: 'Skaar' }, { value: 'Skin', label: 'Skin' }, { value: 'Skreet', label: 'Skreet' }, { value: 'Skrulls', label: 'Skrulls' }, { value: 'Skullbuster', label: 'Skullbuster' }, { value: 'Slapstick', label: 'Slapstick' }, { value: 'Slayback', label: 'Slayback' }, { value: 'Sleeper', label: 'Sleeper' }, { value: 'Sleepwalker', label: 'Sleepwalker' }, { value: 'Slipstream', label: 'Slipstream' }, { value: 'Slyde', label: 'Slyde' }, { value: 'Smasher', label: 'Smasher' }, { value: 'Smiling Tiger', label: 'Smiling Tiger' }, { value: 'Snowbird', label: 'Snowbird' }, { value: 'Solo', label: 'Solo' }, { value: 'Songbird', label: 'Songbird' }, { value: 'Sons of the Tiger', label: 'Sons of the Tiger' }, { value: 'Spacker Dave', label: 'Spacker Dave' }, { value: 'Spectrum', label: 'Spectrum' }, { value: 'Speed', label: 'Speed' }, { value: 'Speed Demon', label: 'Speed Demon' }, { value: 'Speedball', label: 'Speedball' }, { value: 'Spencer Smythe', label: 'Spencer Smythe' }, { value: 'Sphinx', label: 'Sphinx' }, { value: 'Spider-dok', label: 'Spider-dok' }, { value: 'Spider-Girl', label: 'Spider-Girl' }, { value: 'Spider-Ham', label: 'Spider-Ham' }, { value: 'Spider-Man', label: 'Spider-Man' }, { value: 'Spider-Woman', label: 'Spider-Woman' }, { value: 'Spiral', label: 'Spiral' }, { value: 'Spirit', label: 'Spirit' }, { value: 'Spitfire', label: 'Spitfire' }, { value: 'Spot', label: 'Spot' }, { value: 'Sprite', label: 'Sprite' }, { value: 'Spyke', label: 'Spyke' }, { value: 'Squadron Sinister', label: 'Squadron Sinister' }, { value: 'Squadron Supreme', label: 'Squadron Supreme' }, { value: 'Squirrel Girl', label: 'Squirrel Girl' }, { value: 'Stacy X', label: 'Stacy X' }, { value: 'Star Brand', label: 'Star Brand' }, { value: 'Star-Lord', label: 'Star-Lord' }, { value: 'Starbolt', label: 'Starbolt' }, { value: 'Stardust', label: 'Stardust' }, { value: 'Starfox', label: 'Starfox' }, { value: 'Starhawk', label: 'Starhawk' }, { value: 'Starjammers', label: 'Starjammers' }, { value: 'Stark Industries', label: 'Stark Industries' }, { value: 'Stature', label: 'Stature' }, { value: 'Steel Serpent', label: 'Steel Serpent' }, { value: 'Stellaris', label: 'Stellaris' }, { value: 'Stepford Cuckoos', label: 'Stepford Cuckoos' }, { value: 'Stephanie de la Spiroza', label: 'Stephanie de la Spiroza' }, { value: 'Stephen Strange', label: 'Stephen Strange' }, { value: 'Steve Rogers', label: 'Steve Rogers' }, { value: 'Stick', label: 'Stick' }, { value: 'Stilt-Man', label: 'Stilt-Man' }, { value: 'Stingray', label: 'Stingray' }, { value: 'Stone Men', label: 'Stone Men' }, { value: 'Storm', label: 'Storm' }, { value: 'Stranger', label: 'Stranger' }, { value: 'Strong Guy', label: 'Strong Guy' }, { value: 'Stryfe', label: 'Stryfe' }, { value: 'Sub-Mariner', label: 'Sub-Mariner' }, { value: 'Sue Storm', label: 'Sue Storm' }, { value: 'Sugar Man', label: 'Sugar Man' }, { value: 'Sumo', label: 'Sumo' }, { value: 'Sunfire', label: 'Sunfire' }, { value: 'Sunset Bain', label: 'Sunset Bain' }, { value: 'Sunspot', label: 'Sunspot' }, { value: 'Super Hero Squad', label: 'Super Hero Squad' }, { value: 'Super-Adaptoid', label: 'Super-Adaptoid' }, { value: 'Super-Skrull', label: 'Super-Skrull' }, { value: 'Supernaut', label: 'Supernaut' }, { value: 'Supreme Intelligence', label: 'Supreme Intelligence' }, { value: 'Surge', label: 'Surge' }, { value: 'Susan Delgado', label: 'Susan Delgado' }, { value: 'Swarm', label: 'Swarm' }, { value: 'Sway', label: 'Sway' }, { value: 'Switch', label: 'Switch' }, { value: 'Swordsman', label: 'Swordsman' }, { value: 'Sym', label: 'Sym' }, { value: 'Synch', label: 'Synch' }, { value: 'T\'Challa', label: 'T\'Challa' }, { value: 'Tag', label: 'Tag' }, { value: 'Talisman', label: 'Talisman' }, { value: 'Talkback', label: 'Talkback' }, { value: 'Talon', label: 'Talon' }, { value: 'Talos', label: 'Talos' }, { value: 'Tana Nile', label: 'Tana Nile' }, { value: 'Tarantula', label: 'Tarantula' }, { value: 'Tarot', label: 'Tarot' }, { value: 'Taskmaster', label: 'Taskmaster' }, { value: 'Tattoo', label: 'Tattoo' }, { value: 'Ted Forrester', label: 'Ted Forrester' }, { value: 'Tempest', label: 'Tempest' }, { value: 'Tenebrous', label: 'Tenebrous' }, { value: 'Terrax', label: 'Terrax' }, { value: 'Terror', label: 'Terror' }, { value: 'Texas Twister', label: 'Texas Twister' }, { value: 'Thaddeus Ross', label: 'Thaddeus Ross' }, { value: 'Thanos', label: 'Thanos' }, { value: 'The 198', label: 'The 198' }, { value: 'The Anarchist', label: 'The Anarchist' }, { value: 'The Call', label: 'The Call' }, { value: 'The Captain', label: 'The Captain' }, { value: 'The Enforcers', label: 'The Enforcers' }, { value: 'The Executioner', label: 'The Executioner' }, { value: 'The Fallen', label: 'The Fallen' }, { value: 'The Fury', label: 'The Fury' }, { value: 'The Hand', label: 'The Hand' }, { value: 'The Hood', label: 'The Hood' }, { value: 'The Howling Commandos', label: 'The Howling Commandos' }, { value: 'The Hunter', label: 'The Hunter' }, { value: 'The Initiative', label: 'The Initiative' }, { value: 'The Leader', label: 'The Leader' }, { value: 'The Liberteens', label: 'The Liberteens' }, { value: 'The Liberty Legion', label: 'The Liberty Legion' }, { value: 'The Order', label: 'The Order' }, { value: 'The Phantom', label: 'The Phantom' }, { value: 'The Professor', label: 'The Professor' }, { value: 'The Renegades', label: 'The Renegades' }, { value: 'The Santerians', label: 'The Santerians' }, { value: 'The Shiver Man', label: 'The Shiver Man' }, { value: 'The Spike', label: 'The Spike' }, { value: 'The Stranger', label: 'The Stranger' }, { value: 'The Twelve', label: 'The Twelve' }, { value: 'The Watchers', label: 'The Watchers' }, { value: 'Thena', label: 'Thena' }, { value: 'Thing', label: 'Thing' }, { value: 'Thor', label: 'Thor' }, { value: 'Thor Girl', label: 'Thor Girl' }, { value: 'Thunderball', label: 'Thunderball' }, { value: 'Thunderbird', label: 'Thunderbird' }, { value: 'Thunderbolt', label: 'Thunderbolt' }, { value: 'Thunderbolt Ross', label: 'Thunderbolt Ross' }, { value: 'Thunderbolts', label: 'Thunderbolts' }, { value: 'Thundra', label: 'Thundra' }, { value: 'Tiger Shark', label: 'Tiger Shark' }, { value: 'Tiger\'s Beautiful Daughter', label: 'Tiger\'s Beautiful Daughter' }, { value: 'Tigra', label: 'Tigra' }, { value: 'Timeslip', label: 'Timeslip' }, { value: 'Tinkerer', label: 'Tinkerer' }, { value: 'Titania', label: 'Titania' }, { value: 'Titanium Man', label: 'Titanium Man' }, { value: 'Toad', label: 'Toad' }, { value: 'Toad Men', label: 'Toad Men' }, { value: 'Tomas', label: 'Tomas' }, { value: 'Tombstone', label: 'Tombstone' }, { value: 'Tomorrow Man', label: 'Tomorrow Man' }, { value: 'Tony Stark', label: 'Tony Stark' }, { value: 'Toro', label: 'Toro' }, { value: 'Toxin', label: 'Toxin' }, { value: 'Trauma', label: 'Trauma' }, { value: 'Triathlon', label: 'Triathlon' }, { value: 'Trish Tilby', label: 'Trish Tilby' }, { value: 'Triton', label: 'Triton' }, { value: 'True Believers', label: 'True Believers' }, { value: 'Turbo', label: 'Turbo' }, { value: 'Tusk', label: 'Tusk' }, { value: 'Two-Gun Kid', label: 'Two-Gun Kid' }, { value: 'Tyger Tiger', label: 'Tyger Tiger' }, { value: 'Typhoid Mary', label: 'Typhoid Mary' }, { value: 'Tyrannus', label: 'Tyrannus' }, { value: 'U-Foes', label: 'U-Foes' }, { value: 'U-Go Girl', label: 'U-Go Girl' }, { value: 'U.S. Agent', label: 'U.S. Agent' }, { value: 'Uatu The Watcher', label: 'Uatu The Watcher' }, { value: 'Ulik', label: 'Ulik' }, { value: 'Ultimate Spider-Man', label: 'Ultimate Spider-Man' }, { value: 'Ultimates', label: 'Ultimates' }, { value: 'Ultimatum', label: 'Ultimatum' }, { value: 'Ultimo', label: 'Ultimo' }, { value: 'Ultra-Adaptoid', label: 'Ultra-Adaptoid' }, { value: 'Ultragirl', label: 'Ultragirl' }, { value: 'Ultron', label: 'Ultron' }, { value: 'Umar', label: 'Umar' }, { value: 'Unicorn', label: 'Unicorn' }, { value: 'Union Jack', label: 'Union Jack' }, { value: 'Unus', label: 'Unus' }, { value: 'Valeria Richards', label: 'Valeria Richards' }, { value: 'Valkyrie', label: 'Valkyrie' }, { value: 'Vampiro', label: 'Vampiro' }, { value: 'Vance Astro', label: 'Vance Astro' }, { value: 'Vanisher', label: 'Vanisher' }, { value: 'Vapor', label: 'Vapor' }, { value: 'Vargas', label: 'Vargas' }, { value: 'Vector', label: 'Vector' }, { value: 'Veda', label: 'Veda' }, { value: 'Vengeance', label: 'Vengeance' }, { value: 'Venom', label: 'Venom' }, { value: 'Venus', label: 'Venus' }, { value: 'Venus Dee Milo', label: 'Venus Dee Milo' }, { value: 'Vermin', label: 'Vermin' }, { value: 'Vertigo', label: 'Vertigo' }, { value: 'Victor Mancha', label: 'Victor Mancha' }, { value: 'Victor Von Doom', label: 'Victor Von Doom' }, { value: 'Vin Gonzales', label: 'Vin Gonzales' }, { value: 'Vindicator', label: 'Vindicator' }, { value: 'Violations', label: 'Violations' }, { value: 'Viper', label: 'Viper' }, { value: 'Virginia Dare', label: 'Virginia Dare' }, { value: 'Vision', label: 'Vision' }, { value: 'Vivisector', label: 'Vivisector' }, { value: 'Vulcan', label: 'Vulcan' }, { value: 'Vulture', label: 'Vulture' }, { value: 'Wallflower', label: 'Wallflower' }, { value: 'Wallop', label: 'Wallop' }, { value: 'Wallow', label: 'Wallow' }, { value: 'War', label: 'War' }, { value: 'War Machine', label: 'War Machine' }, { value: 'Warbird', label: 'Warbird' }, { value: 'Warbound', label: 'Warbound' }, { value: 'Warhawk', label: 'Warhawk' }, { value: 'Warlock', label: 'Warlock' }, { value: 'Warpath', label: 'Warpath' }, { value: 'Warren Worthington III', label: 'Warren Worthington III' }, { value: 'Warstar', label: 'Warstar' }, { value: 'Wasp', label: 'Wasp' }, { value: 'Weapon Omega', label: 'Weapon Omega' }, { value: 'Weapon X', label: 'Weapon X' }, { value: 'Wendell Rand', label: 'Wendell Rand' }, { value: 'Wendell Vaughn', label: 'Wendell Vaughn' }, { value: 'Wendigo', label: 'Wendigo' }, { value: 'Werewolf By Night', label: 'Werewolf By Night' }, { value: 'Whiplash', label: 'Whiplash' }, { value: 'Whirlwind', label: 'Whirlwind' }, { value: 'Whistler', label: 'Whistler' }, { value: 'White Queen', label: 'White Queen' }, { value: 'White Tiger', label: 'White Tiger' }, { value: 'Whizzer', label: 'Whizzer' }, { value: 'Wiccan', label: 'Wiccan' }, { value: 'Wild Child', label: 'Wild Child' }, { value: 'Wild Pack', label: 'Wild Pack' }, { value: 'Wildside', label: 'Wildside' }, { value: 'William Stryker', label: 'William Stryker' }, { value: 'Wilson Fisk', label: 'Wilson Fisk' }, { value: 'Wind Dancer', label: 'Wind Dancer' }, { value: 'Winter Soldier', label: 'Winter Soldier' }, { value: 'Wither', label: 'Wither' }, { value: 'Wolf Cub', label: 'Wolf Cub' }, { value: 'Wolfpack', label: 'Wolfpack' }, { value: 'Wolfsbane', label: 'Wolfsbane' }, { value: 'Wolver-dok', label: 'Wolver-dok' }, { value: 'Wolverine', label: 'Wolverine' }, { value: 'Wonder Man', label: 'Wonder Man' }, { value: 'Wong', label: 'Wong' }, { value: 'Wraith', label: 'Wraith' }, { value: 'Wrecker', label: 'Wrecker' }, { value: 'Wrecking Crew', label: 'Wrecking Crew' }, { value: 'X-23', label: 'X-23' }, { value: 'X-51', label: 'X-51' }, { value: 'X-Babies', label: 'X-Babies' }, { value: 'X-Cutioner', label: 'X-Cutioner' }, { value: 'X-Factor', label: 'X-Factor' }, { value: 'X-Factor Investigations', label: 'X-Factor Investigations' }, { value: 'X-Force', label: 'X-Force' }, { value: 'X-Man', label: 'X-Man' }, { value: 'X-Men', label: 'X-Men' }, { value: 'X-Ray', label: 'X-Ray' }, { value: 'X-Statix', label: 'X-Statix' }, { value: 'X.S.E.', label: 'X.S.E.' }, { value: 'Xavin', label: 'Xavin' }, { value: 'Xorn', label: 'Xorn' }, { value: 'Yellow Claw', label: 'Yellow Claw' }, { value: 'Yellowjacket', label: 'Yellowjacket' }, { value: 'Young Avengers', label: 'Young Avengers' }, { value: 'Young X-Men', label: 'Young X-Men' }, { value: 'Zaladane', label: 'Zaladane' }, { value: 'Zaran', label: 'Zaran' }, { value: 'Zarda', label: 'Zarda' }, { value: 'Zarek', label: 'Zarek' }, { value: 'Zeigeist', label: 'Zeigeist' }, { value: 'Zemo', label: 'Zemo' }, { value: 'Zodiak', label: 'Zodiak' }, { value: 'Zombie', label: 'Zombie' }, { value: 'Zuras', label: 'Zuras' }, { value: 'Zzza', label: 'Zzza' }];
+	    return React.createElement(
+	      'div',
+	      { className: 'fighterBlock' },
+	      React.createElement(Select, {
+	        name: 'form-field-name',
+	        value: this.state.selectValue,
+	        className: 'selectah',
+	        options: options,
+	        onChange: this.updateValue
+	      })
+	    );
+	  }
+	});
+
+	module.exports = Fighter;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(230);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(232)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Battlezone.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./Battlezone.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(231)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body, html {\n  margin: 0;\n  padding: 0;\n  background: #b50f16;\n  /* Old browsers */\n  background: -moz-radial-gradient(center, ellipse cover, #b50f16 32%, #b50f16 32%, #720a0c 80%, #3d0001 100%);\n  /* FF3.6-15 */\n  background: -webkit-radial-gradient(center, ellipse cover, #b50f16 32%, #b50f16 32%, #720a0c 80%, #3d0001 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: radial-gradient(ellipse at center, #b50f16 32%, #b50f16 32%, #720a0c 80%, #3d0001 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  height: 100%;\n  position: relative;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n  body:focus, html:focus {\n    outline: 0; }\n\nbody, html, h1, h2, h3, h4, h5, h6, p, ul, li, input {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  font-weight: normal;\n  font-style: normal; }\n\na, button {\n  cursor: pointer; }\n\nhtml {\n  touch-action: manipulation; }\n\n*:focus {\n  outline: none; }\n\ntextarea,\ninput[type=\"text\"],\ninput[type=\"button\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: none;\n  border-radius: 0; }\n\n.selectah {\n  width: 300px;\n  border: none;\n  font-size: 24px;\n  align-self: flex-end;\n  padding: 10px;\n  font-family: \"lint-mccree\", sans-serif;\n  font-style: normal;\n  font-weight: 400;\n  background-color: red;\n  line-height: 36px;\n  font-size: 18px; }\n\n.versus {\n  padding: 20px;\n  height: 400px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: relative; }\n  .versus .fighter {\n    background-color: green;\n    text-align: center;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding-bottom: 20px;\n    display: block;\n    /*\n    input[type=\"text\"]{\n      width: 80%;\n      max-width: 300px;\n      border: none; \n      font-size: 24px;\n      align-self: flex-end;\n      padding: 10px;\n      font-family: \"lint-mccree\", sans-serif;\n      font-style: normal;\n      font-weight: 400;\n    }\n    */ }\n  .versus .fighterBlock {\n    width: 35vw;\n    height: 35vw;\n    background-color: red;\n    margin-top: 10%; }\n    .versus .fighterBlock:first-child {\n      transform: rotate(-2deg); }\n    .versus .fighterBlock:last-child {\n      transform: rotate(2deg); }\n  .versus .vsText {\n    color: white;\n    position: absolute;\n    z-index: 99;\n    font-size: 100px;\n    font-family: \"badaboom-pro\",sans-serif;\n    font-style: italic;\n    font-weight: 400;\n    transform: skew(-3deg, -6deg);\n    text-shadow: 1px 1px 1px #000; }\n\n/**\n * React Select\n * ============\n * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/\n * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs\n * MIT License: https://github.com/JedWatson/react-select\n*/\n.Select {\n  position: relative; }\n\n.Select,\n.Select div,\n.Select input,\n.Select span {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.Select.is-disabled > .Select-control {\n  background-color: #f9f9f9; }\n\n.Select.is-disabled > .Select-control:hover {\n  box-shadow: none; }\n\n.Select.is-disabled .Select-arrow-zone {\n  cursor: default;\n  pointer-events: none;\n  opacity: 0.35; }\n\n.Select-control {\n  background-color: #fff;\n  border-color: #d9d9d9 #ccc #b3b3b3;\n  border-radius: 4px;\n  border: 1px solid #ccc;\n  color: #333;\n  cursor: default;\n  display: table;\n  border-spacing: 0;\n  border-collapse: separate;\n  height: 36px;\n  outline: none;\n  overflow: hidden;\n  position: relative;\n  width: 100%; }\n\n.Select-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); }\n\n.Select-control .Select-input:focus {\n  outline: none; }\n\n.is-searchable.is-open > .Select-control {\n  cursor: text; }\n\n.is-open > .Select-control {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  background: #fff;\n  border-color: #b3b3b3 #ccc #d9d9d9; }\n\n.is-open > .Select-control > .Select-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px; }\n\n.is-searchable.is-focused:not(.is-open) > .Select-control {\n  cursor: text; }\n\n.is-focused:not(.is-open) > .Select-control {\n  border-color: #007eff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1); }\n\n.Select-placeholder,\n.Select--single > .Select-control .Select-value {\n  bottom: 0;\n  color: #aaa;\n  left: 0;\n  line-height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap; }\n\n.has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #333; }\n\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label {\n  cursor: pointer;\n  text-decoration: none; }\n\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:focus,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:focus {\n  color: #007eff;\n  outline: none;\n  text-decoration: underline; }\n\n.Select-input {\n  height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: middle; }\n\n.Select-input > input {\n  width: 100%;\n  background: none transparent;\n  border: 0 none;\n  box-shadow: none;\n  cursor: default;\n  display: inline-block;\n  font-family: inherit;\n  font-size: inherit;\n  margin: 0;\n  outline: none;\n  line-height: 14px;\n  /* For IE 8 compatibility */\n  padding: 8px 0 12px;\n  /* For IE 8 compatibility */\n  -webkit-appearance: none; }\n\n.is-focused .Select-input > input {\n  cursor: text; }\n\n.has-value.is-pseudo-focused .Select-input {\n  opacity: 0; }\n\n.Select-control:not(.is-searchable) > .Select-input {\n  outline: none; }\n\n.Select-loading-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 16px; }\n\n.Select-loading {\n  -webkit-animation: Select-animation-spin 400ms infinite linear;\n  -o-animation: Select-animation-spin 400ms infinite linear;\n  animation: Select-animation-spin 400ms infinite linear;\n  width: 16px;\n  height: 16px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  border: 2px solid #ccc;\n  border-right-color: #333;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle; }\n\n.Select-clear-zone {\n  -webkit-animation: Select-animation-fadeIn 200ms;\n  -o-animation: Select-animation-fadeIn 200ms;\n  animation: Select-animation-fadeIn 200ms;\n  color: #999;\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 17px; }\n\n.Select-clear-zone:hover {\n  color: #D0021B; }\n\n.Select-clear {\n  display: inline-block;\n  font-size: 18px;\n  line-height: 1; }\n\n.Select--multi .Select-clear-zone {\n  width: 17px; }\n\n.Select-arrow-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 25px;\n  padding-right: 5px; }\n\n.Select-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 2.5px;\n  display: inline-block;\n  height: 0;\n  width: 0; }\n\n.is-open .Select-arrow,\n.Select-arrow-zone:hover > .Select-arrow {\n  border-top-color: #666; }\n\n.Select--multi .Select-multi-value-wrapper {\n  display: inline-block; }\n\n.Select .Select-aria-only {\n  display: inline-block;\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  clip: rect(0, 0, 0, 0);\n  overflow: hidden; }\n\n@-webkit-keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n@keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.Select-menu-outer {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-top-color: #e6e6e6;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1;\n  -webkit-overflow-scrolling: touch; }\n\n.Select-menu {\n  max-height: 198px;\n  overflow-y: auto; }\n\n.Select-option {\n  box-sizing: border-box;\n  background-color: #fff;\n  color: #666666;\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px; }\n\n.Select-option:last-child {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px; }\n\n.Select-option.is-selected {\n  background-color: #f5faff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.04);\n  color: #333; }\n\n.Select-option.is-focused {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  color: #333; }\n\n.Select-option.is-disabled {\n  color: #cccccc;\n  cursor: default; }\n\n.Select-noresults {\n  box-sizing: border-box;\n  color: #999999;\n  cursor: default;\n  display: block;\n  padding: 8px 10px; }\n\n.Select--multi .Select-input {\n  vertical-align: middle;\n  margin-left: 10px;\n  padding: 0; }\n\n.Select--multi.has-value .Select-input {\n  margin-left: 5px; }\n\n.Select--multi .Select-value {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  border-radius: 2px;\n  border: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border: 1px solid rgba(0, 126, 255, 0.24);\n  color: #007eff;\n  display: inline-block;\n  font-size: 0.9em;\n  line-height: 1.4;\n  margin-left: 5px;\n  margin-top: 5px;\n  vertical-align: top; }\n\n.Select--multi .Select-value-icon,\n.Select--multi .Select-value-label {\n  display: inline-block;\n  vertical-align: middle; }\n\n.Select--multi .Select-value-label {\n  border-bottom-right-radius: 2px;\n  border-top-right-radius: 2px;\n  cursor: default;\n  padding: 2px 5px; }\n\n.Select--multi a.Select-value-label {\n  color: #007eff;\n  cursor: pointer;\n  text-decoration: none; }\n\n.Select--multi a.Select-value-label:hover {\n  text-decoration: underline; }\n\n.Select--multi .Select-value-icon {\n  cursor: pointer;\n  border-bottom-left-radius: 2px;\n  border-top-left-radius: 2px;\n  border-right: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border-right: 1px solid rgba(0, 126, 255, 0.24);\n  padding: 1px 5px 3px; }\n\n.Select--multi .Select-value-icon:hover,\n.Select--multi .Select-value-icon:focus {\n  background-color: #d8eafd;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 113, 230, 0.08);\n  color: #0071e6; }\n\n.Select--multi .Select-value-icon:active {\n  background-color: #c2e0ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.24); }\n\n.Select--multi.is-disabled .Select-value {\n  background-color: #fcfcfc;\n  border: 1px solid #e3e3e3;\n  color: #333; }\n\n.Select--multi.is-disabled .Select-value-icon {\n  cursor: not-allowed;\n  border-right: 1px solid #e3e3e3; }\n\n.Select--multi.is-disabled .Select-value-icon:hover,\n.Select--multi.is-disabled .Select-value-icon:focus,\n.Select--multi.is-disabled .Select-value-icon:active {\n  background-color: #fcfcfc; }\n\n@keyframes Select-animation-spin {\n  to {\n    transform: rotate(1turn); } }\n\n@-webkit-keyframes Select-animation-spin {\n  to {\n    -webkit-transform: rotate(1turn); } }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 231 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Fighter = __webpack_require__(228);
+
+	var Versus = React.createClass({
+	  displayName: 'Versus',
+
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'versus' },
+	      React.createElement(Fighter, { player: '1', data: '' }),
+	      React.createElement(
+	        'div',
+	        { className: 'vsText' },
+	        'VS.'
+	      ),
+	      React.createElement(Fighter, { player: '2', data: '' })
+	    );
+	  }
+	});
+
+	module.exports = Versus;
+
+/***/ },
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/react-select
+	*/
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(34);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactInputAutosize = __webpack_require__(259);
+
+	var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
+
+	var _classnames = __webpack_require__(260);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _utilsDefaultArrowRenderer = __webpack_require__(261);
+
+	var _utilsDefaultArrowRenderer2 = _interopRequireDefault(_utilsDefaultArrowRenderer);
+
+	var _utilsDefaultFilterOptions = __webpack_require__(262);
+
+	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
+
+	var _utilsDefaultMenuRenderer = __webpack_require__(264);
+
+	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
+
+	var _Async = __webpack_require__(265);
+
+	var _Async2 = _interopRequireDefault(_Async);
+
+	var _AsyncCreatable = __webpack_require__(266);
+
+	var _AsyncCreatable2 = _interopRequireDefault(_AsyncCreatable);
+
+	var _Creatable = __webpack_require__(267);
+
+	var _Creatable2 = _interopRequireDefault(_Creatable);
+
+	var _Option = __webpack_require__(268);
+
+	var _Option2 = _interopRequireDefault(_Option);
+
+	var _Value = __webpack_require__(269);
+
+	var _Value2 = _interopRequireDefault(_Value);
+
+	function stringifyValue(value) {
+		var valueType = typeof value;
+		if (valueType === 'string') {
+			return value;
+		} else if (valueType === 'object') {
+			return JSON.stringify(value);
+		} else if (valueType === 'number' || valueType === 'boolean') {
+			return String(value);
+		} else {
+			return '';
+		}
+	}
+
+	var stringOrNode = _react2['default'].PropTypes.oneOfType([_react2['default'].PropTypes.string, _react2['default'].PropTypes.node]);
+
+	var instanceId = 1;
+
+	var Select = _react2['default'].createClass({
+
+		displayName: 'Select',
+
+		propTypes: {
+			addLabelText: _react2['default'].PropTypes.string, // placeholder displayed when you want to add a label on a multi-value input
+			'aria-label': _react2['default'].PropTypes.string, // Aria label (for assistive tech)
+			'aria-labelledby': _react2['default'].PropTypes.string, // HTML ID of an element that should be used as the label (for assistive tech)
+			arrowRenderer: _react2['default'].PropTypes.func, // Create drop-down caret element
+			autoBlur: _react2['default'].PropTypes.bool, // automatically blur the component when an option is selected
+			autofocus: _react2['default'].PropTypes.bool, // autofocus the component on mount
+			autosize: _react2['default'].PropTypes.bool, // whether to enable autosizing or not
+			backspaceRemoves: _react2['default'].PropTypes.bool, // whether backspace removes an item if there is no text input
+			backspaceToRemoveMessage: _react2['default'].PropTypes.string, // Message to use for screenreaders to press backspace to remove the current item - {label} is replaced with the item label
+			className: _react2['default'].PropTypes.string, // className for the outer element
+			clearAllText: stringOrNode, // title for the "clear" control when multi: true
+			clearValueText: stringOrNode, // title for the "clear" control
+			clearable: _react2['default'].PropTypes.bool, // should it be possible to reset value
+			delimiter: _react2['default'].PropTypes.string, // delimiter to use to join multiple values for the hidden field value
+			disabled: _react2['default'].PropTypes.bool, // whether the Select is disabled or not
+			escapeClearsValue: _react2['default'].PropTypes.bool, // whether escape clears the value when the menu is closed
+			filterOption: _react2['default'].PropTypes.func, // method to filter a single option (option, filterString)
+			filterOptions: _react2['default'].PropTypes.any, // boolean to enable default filtering or function to filter the options array ([options], filterString, [values])
+			ignoreAccents: _react2['default'].PropTypes.bool, // whether to strip diacritics when filtering
+			ignoreCase: _react2['default'].PropTypes.bool, // whether to perform case-insensitive filtering
+			inputProps: _react2['default'].PropTypes.object, // custom attributes for the Input
+			inputRenderer: _react2['default'].PropTypes.func, // returns a custom input component
+			instanceId: _react2['default'].PropTypes.string, // set the components instanceId
+			isLoading: _react2['default'].PropTypes.bool, // whether the Select is loading externally or not (such as options being loaded)
+			joinValues: _react2['default'].PropTypes.bool, // joins multiple values into a single form field with the delimiter (legacy mode)
+			labelKey: _react2['default'].PropTypes.string, // path of the label value in option objects
+			matchPos: _react2['default'].PropTypes.string, // (any|start) match the start or entire string when filtering
+			matchProp: _react2['default'].PropTypes.string, // (any|label|value) which option property to filter on
+			menuBuffer: _react2['default'].PropTypes.number, // optional buffer (in px) between the bottom of the viewport and the bottom of the menu
+			menuContainerStyle: _react2['default'].PropTypes.object, // optional style to apply to the menu container
+			menuRenderer: _react2['default'].PropTypes.func, // renders a custom menu with options
+			menuStyle: _react2['default'].PropTypes.object, // optional style to apply to the menu
+			multi: _react2['default'].PropTypes.bool, // multi-value input
+			name: _react2['default'].PropTypes.string, // generates a hidden <input /> tag with this field name for html forms
+			noResultsText: stringOrNode, // placeholder displayed when there are no matching search results
+			onBlur: _react2['default'].PropTypes.func, // onBlur handler: function (event) {}
+			onBlurResetsInput: _react2['default'].PropTypes.bool, // whether input is cleared on blur
+			onChange: _react2['default'].PropTypes.func, // onChange handler: function (newValue) {}
+			onClose: _react2['default'].PropTypes.func, // fires when the menu is closed
+			onCloseResetsInput: _react2['default'].PropTypes.bool, // whether input is cleared when menu is closed through the arrow
+			onFocus: _react2['default'].PropTypes.func, // onFocus handler: function (event) {}
+			onInputChange: _react2['default'].PropTypes.func, // onInputChange handler: function (inputValue) {}
+			onInputKeyDown: _react2['default'].PropTypes.func, // input keyDown handler: function (event) {}
+			onMenuScrollToBottom: _react2['default'].PropTypes.func, // fires when the menu is scrolled to the bottom; can be used to paginate options
+			onOpen: _react2['default'].PropTypes.func, // fires when the menu is opened
+			onValueClick: _react2['default'].PropTypes.func, // onClick handler for value labels: function (value, event) {}
+			openAfterFocus: _react2['default'].PropTypes.bool, // boolean to enable opening dropdown when focused
+			openOnFocus: _react2['default'].PropTypes.bool, // always open options menu on focus
+			optionClassName: _react2['default'].PropTypes.string, // additional class(es) to apply to the <Option /> elements
+			optionComponent: _react2['default'].PropTypes.func, // option component to render in dropdown
+			optionRenderer: _react2['default'].PropTypes.func, // optionRenderer: function (option) {}
+			options: _react2['default'].PropTypes.array, // array of options
+			pageSize: _react2['default'].PropTypes.number, // number of entries to page when using page up/down keys
+			placeholder: stringOrNode, // field placeholder, displayed when there's no value
+			required: _react2['default'].PropTypes.bool, // applies HTML5 required attribute when needed
+			resetValue: _react2['default'].PropTypes.any, // value to use when you clear the control
+			scrollMenuIntoView: _react2['default'].PropTypes.bool, // boolean to enable the viewport to shift so that the full menu fully visible when engaged
+			searchable: _react2['default'].PropTypes.bool, // whether to enable searching feature or not
+			simpleValue: _react2['default'].PropTypes.bool, // pass the value to onChange as a simple value (legacy pre 1.0 mode), defaults to false
+			style: _react2['default'].PropTypes.object, // optional style to apply to the control
+			tabIndex: _react2['default'].PropTypes.string, // optional tab index of the control
+			tabSelectsValue: _react2['default'].PropTypes.bool, // whether to treat tabbing out while focused to be value selection
+			value: _react2['default'].PropTypes.any, // initial field value
+			valueComponent: _react2['default'].PropTypes.func, // value component to render
+			valueKey: _react2['default'].PropTypes.string, // path of the label value in option objects
+			valueRenderer: _react2['default'].PropTypes.func, // valueRenderer: function (option) {}
+			wrapperStyle: _react2['default'].PropTypes.object },
+
+		// optional style to apply to the component wrapper
+		statics: { Async: _Async2['default'], AsyncCreatable: _AsyncCreatable2['default'], Creatable: _Creatable2['default'] },
+
+		getDefaultProps: function getDefaultProps() {
+			return {
+				addLabelText: 'Add "{label}"?',
+				arrowRenderer: _utilsDefaultArrowRenderer2['default'],
+				autosize: true,
+				backspaceRemoves: true,
+				backspaceToRemoveMessage: 'Press backspace to remove {label}',
+				clearable: true,
+				clearAllText: 'Clear all',
+				clearValueText: 'Clear value',
+				delimiter: ',',
+				disabled: false,
+				escapeClearsValue: true,
+				filterOptions: _utilsDefaultFilterOptions2['default'],
+				ignoreAccents: true,
+				ignoreCase: true,
+				inputProps: {},
+				isLoading: false,
+				joinValues: false,
+				labelKey: 'label',
+				matchPos: 'any',
+				matchProp: 'any',
+				menuBuffer: 0,
+				menuRenderer: _utilsDefaultMenuRenderer2['default'],
+				multi: false,
+				noResultsText: 'No results found',
+				onBlurResetsInput: true,
+				onCloseResetsInput: true,
+				openAfterFocus: false,
+				optionComponent: _Option2['default'],
+				pageSize: 5,
+				placeholder: 'Select...',
+				required: false,
+				scrollMenuIntoView: true,
+				searchable: true,
+				simpleValue: false,
+				tabSelectsValue: true,
+				valueComponent: _Value2['default'],
+				valueKey: 'value'
+			};
+		},
+
+		getInitialState: function getInitialState() {
+			return {
+				inputValue: '',
+				isFocused: false,
+				isOpen: false,
+				isPseudoFocused: false,
+				required: false
+			};
+		},
+
+		componentWillMount: function componentWillMount() {
+			this._instancePrefix = 'react-select-' + (this.props.instanceId || ++instanceId) + '-';
+			var valueArray = this.getValueArray(this.props.value);
+
+			if (this.props.required) {
+				this.setState({
+					required: this.handleRequired(valueArray[0], this.props.multi)
+				});
+			}
+		},
+
+		componentDidMount: function componentDidMount() {
+			if (this.props.autofocus) {
+				this.focus();
+			}
+		},
+
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			var valueArray = this.getValueArray(nextProps.value, nextProps);
+
+			if (nextProps.required) {
+				this.setState({
+					required: this.handleRequired(valueArray[0], nextProps.multi)
+				});
+			}
+		},
+
+		componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+			if (nextState.isOpen !== this.state.isOpen) {
+				this.toggleTouchOutsideEvent(nextState.isOpen);
+				var handler = nextState.isOpen ? nextProps.onOpen : nextProps.onClose;
+				handler && handler();
+			}
+		},
+
+		componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+			// focus to the selected option
+			if (this.menu && this.focused && this.state.isOpen && !this.hasScrolledToOption) {
+				var focusedOptionNode = _reactDom2['default'].findDOMNode(this.focused);
+				var menuNode = _reactDom2['default'].findDOMNode(this.menu);
+				menuNode.scrollTop = focusedOptionNode.offsetTop;
+				this.hasScrolledToOption = true;
+			} else if (!this.state.isOpen) {
+				this.hasScrolledToOption = false;
+			}
+
+			if (this._scrollToFocusedOptionOnUpdate && this.focused && this.menu) {
+				this._scrollToFocusedOptionOnUpdate = false;
+				var focusedDOM = _reactDom2['default'].findDOMNode(this.focused);
+				var menuDOM = _reactDom2['default'].findDOMNode(this.menu);
+				var focusedRect = focusedDOM.getBoundingClientRect();
+				var menuRect = menuDOM.getBoundingClientRect();
+				if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top) {
+					menuDOM.scrollTop = focusedDOM.offsetTop + focusedDOM.clientHeight - menuDOM.offsetHeight;
+				}
+			}
+			if (this.props.scrollMenuIntoView && this.menuContainer) {
+				var menuContainerRect = this.menuContainer.getBoundingClientRect();
+				if (window.innerHeight < menuContainerRect.bottom + this.props.menuBuffer) {
+					window.scrollBy(0, menuContainerRect.bottom + this.props.menuBuffer - window.innerHeight);
+				}
+			}
+			if (prevProps.disabled !== this.props.disabled) {
+				this.setState({ isFocused: false }); // eslint-disable-line react/no-did-update-set-state
+				this.closeMenu();
+			}
+		},
+
+		componentWillUnmount: function componentWillUnmount() {
+			document.removeEventListener('touchstart', this.handleTouchOutside);
+		},
+
+		toggleTouchOutsideEvent: function toggleTouchOutsideEvent(enabled) {
+			if (enabled) {
+				document.addEventListener('touchstart', this.handleTouchOutside);
+			} else {
+				document.removeEventListener('touchstart', this.handleTouchOutside);
+			}
+		},
+
+		handleTouchOutside: function handleTouchOutside(event) {
+			// handle touch outside on ios to dismiss menu
+			if (this.wrapper && !this.wrapper.contains(event.target)) {
+				this.closeMenu();
+			}
+		},
+
+		focus: function focus() {
+			if (!this.input) return;
+			this.input.focus();
+
+			if (this.props.openAfterFocus) {
+				this.setState({
+					isOpen: true
+				});
+			}
+		},
+
+		blurInput: function blurInput() {
+			if (!this.input) return;
+			this.input.blur();
+		},
+
+		handleTouchMove: function handleTouchMove(event) {
+			// Set a flag that the view is being dragged
+			this.dragging = true;
+		},
+
+		handleTouchStart: function handleTouchStart(event) {
+			// Set a flag that the view is not being dragged
+			this.dragging = false;
+		},
+
+		handleTouchEnd: function handleTouchEnd(event) {
+			// Check if the view is being dragged, In this case
+			// we don't want to fire the click event (because the user only wants to scroll)
+			if (this.dragging) return;
+
+			// Fire the mouse events
+			this.handleMouseDown(event);
+		},
+
+		handleTouchEndClearValue: function handleTouchEndClearValue(event) {
+			// Check if the view is being dragged, In this case
+			// we don't want to fire the click event (because the user only wants to scroll)
+			if (this.dragging) return;
+
+			// Clear the value
+			this.clearValue(event);
+		},
+
+		handleMouseDown: function handleMouseDown(event) {
+			// if the event was triggered by a mousedown and not the primary
+			// button, or if the component is disabled, ignore it.
+			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
+				return;
+			}
+
+			if (event.target.tagName === 'INPUT') {
+				return;
+			}
+
+			// prevent default event handlers
+			event.stopPropagation();
+			event.preventDefault();
+
+			// for the non-searchable select, toggle the menu
+			if (!this.props.searchable) {
+				this.focus();
+				return this.setState({
+					isOpen: !this.state.isOpen
+				});
+			}
+
+			if (this.state.isFocused) {
+				// On iOS, we can get into a state where we think the input is focused but it isn't really,
+				// since iOS ignores programmatic calls to input.focus() that weren't triggered by a click event.
+				// Call focus() again here to be safe.
+				this.focus();
+
+				var input = this.input;
+				if (typeof input.getInput === 'function') {
+					// Get the actual DOM input if the ref is an <AutosizeInput /> component
+					input = input.getInput();
+				}
+
+				// clears the value so that the cursor will be at the end of input when the component re-renders
+				input.value = '';
+
+				// if the input is focused, ensure the menu is open
+				this.setState({
+					isOpen: true,
+					isPseudoFocused: false
+				});
+			} else {
+				// otherwise, focus the input and open the menu
+				this._openAfterFocus = true;
+				this.focus();
+			}
+		},
+
+		handleMouseDownOnArrow: function handleMouseDownOnArrow(event) {
+			// if the event was triggered by a mousedown and not the primary
+			// button, or if the component is disabled, ignore it.
+			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
+				return;
+			}
+			// If the menu isn't open, let the event bubble to the main handleMouseDown
+			if (!this.state.isOpen) {
+				return;
+			}
+			// prevent default event handlers
+			event.stopPropagation();
+			event.preventDefault();
+			// close the menu
+			this.closeMenu();
+		},
+
+		handleMouseDownOnMenu: function handleMouseDownOnMenu(event) {
+			// if the event was triggered by a mousedown and not the primary
+			// button, or if the component is disabled, ignore it.
+			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
+				return;
+			}
+			event.stopPropagation();
+			event.preventDefault();
+
+			this._openAfterFocus = true;
+			this.focus();
+		},
+
+		closeMenu: function closeMenu() {
+			if (this.props.onCloseResetsInput) {
+				this.setState({
+					isOpen: false,
+					isPseudoFocused: this.state.isFocused && !this.props.multi,
+					inputValue: ''
+				});
+			} else {
+				this.setState({
+					isOpen: false,
+					isPseudoFocused: this.state.isFocused && !this.props.multi,
+					inputValue: this.state.inputValue
+				});
+			}
+			this.hasScrolledToOption = false;
+		},
+
+		handleInputFocus: function handleInputFocus(event) {
+			if (this.props.disabled) return;
+			var isOpen = this.state.isOpen || this._openAfterFocus || this.props.openOnFocus;
+			if (this.props.onFocus) {
+				this.props.onFocus(event);
+			}
+			this.setState({
+				isFocused: true,
+				isOpen: isOpen
+			});
+			this._openAfterFocus = false;
+		},
+
+		handleInputBlur: function handleInputBlur(event) {
+			// The check for menu.contains(activeElement) is necessary to prevent IE11's scrollbar from closing the menu in certain contexts.
+			if (this.menu && (this.menu === document.activeElement || this.menu.contains(document.activeElement))) {
+				this.focus();
+				return;
+			}
+
+			if (this.props.onBlur) {
+				this.props.onBlur(event);
+			}
+			var onBlurredState = {
+				isFocused: false,
+				isOpen: false,
+				isPseudoFocused: false
+			};
+			if (this.props.onBlurResetsInput) {
+				onBlurredState.inputValue = '';
+			}
+			this.setState(onBlurredState);
+		},
+
+		handleInputChange: function handleInputChange(event) {
+			var newInputValue = event.target.value;
+
+			if (this.state.inputValue !== event.target.value && this.props.onInputChange) {
+				var nextState = this.props.onInputChange(newInputValue);
+				// Note: != used deliberately here to catch undefined and null
+				if (nextState != null && typeof nextState !== 'object') {
+					newInputValue = '' + nextState;
+				}
+			}
+
+			this.setState({
+				isOpen: true,
+				isPseudoFocused: false,
+				inputValue: newInputValue
+			});
+		},
+
+		handleKeyDown: function handleKeyDown(event) {
+			if (this.props.disabled) return;
+
+			if (typeof this.props.onInputKeyDown === 'function') {
+				this.props.onInputKeyDown(event);
+				if (event.defaultPrevented) {
+					return;
+				}
+			}
+
+			switch (event.keyCode) {
+				case 8:
+					// backspace
+					if (!this.state.inputValue && this.props.backspaceRemoves) {
+						event.preventDefault();
+						this.popValue();
+					}
+					return;
+				case 9:
+					// tab
+					if (event.shiftKey || !this.state.isOpen || !this.props.tabSelectsValue) {
+						return;
+					}
+					this.selectFocusedOption();
+					return;
+				case 13:
+					// enter
+					if (!this.state.isOpen) return;
+					event.stopPropagation();
+					this.selectFocusedOption();
+					break;
+				case 27:
+					// escape
+					if (this.state.isOpen) {
+						this.closeMenu();
+						event.stopPropagation();
+					} else if (this.props.clearable && this.props.escapeClearsValue) {
+						this.clearValue(event);
+						event.stopPropagation();
+					}
+					break;
+				case 38:
+					// up
+					this.focusPreviousOption();
+					break;
+				case 40:
+					// down
+					this.focusNextOption();
+					break;
+				case 33:
+					// page up
+					this.focusPageUpOption();
+					break;
+				case 34:
+					// page down
+					this.focusPageDownOption();
+					break;
+				case 35:
+					// end key
+					if (event.shiftKey) {
+						return;
+					}
+					this.focusEndOption();
+					break;
+				case 36:
+					// home key
+					if (event.shiftKey) {
+						return;
+					}
+					this.focusStartOption();
+					break;
+				default:
+					return;
+			}
+			event.preventDefault();
+		},
+
+		handleValueClick: function handleValueClick(option, event) {
+			if (!this.props.onValueClick) return;
+			this.props.onValueClick(option, event);
+		},
+
+		handleMenuScroll: function handleMenuScroll(event) {
+			if (!this.props.onMenuScrollToBottom) return;
+			var target = event.target;
+
+			if (target.scrollHeight > target.offsetHeight && !(target.scrollHeight - target.offsetHeight - target.scrollTop)) {
+				this.props.onMenuScrollToBottom();
+			}
+		},
+
+		handleRequired: function handleRequired(value, multi) {
+			if (!value) return true;
+			return multi ? value.length === 0 : Object.keys(value).length === 0;
+		},
+
+		getOptionLabel: function getOptionLabel(op) {
+			return op[this.props.labelKey];
+		},
+
+		/**
+	  * Turns a value into an array from the given options
+	  * @param	{String|Number|Array}	value		- the value of the select input
+	  * @param	{Object}		nextProps	- optionally specify the nextProps so the returned array uses the latest configuration
+	  * @returns	{Array}	the value of the select represented in an array
+	  */
+		getValueArray: function getValueArray(value, nextProps) {
+			var _this = this;
+
+			/** support optionally passing in the `nextProps` so `componentWillReceiveProps` updates will function as expected */
+			var props = typeof nextProps === 'object' ? nextProps : this.props;
+			if (props.multi) {
+				if (typeof value === 'string') value = value.split(props.delimiter);
+				if (!Array.isArray(value)) {
+					if (value === null || value === undefined) return [];
+					value = [value];
+				}
+				return value.map(function (value) {
+					return _this.expandValue(value, props);
+				}).filter(function (i) {
+					return i;
+				});
+			}
+			var expandedValue = this.expandValue(value, props);
+			return expandedValue ? [expandedValue] : [];
+		},
+
+		/**
+	  * Retrieve a value from the given options and valueKey
+	  * @param	{String|Number|Array}	value	- the selected value(s)
+	  * @param	{Object}		props	- the Select component's props (or nextProps)
+	  */
+		expandValue: function expandValue(value, props) {
+			var valueType = typeof value;
+			if (valueType !== 'string' && valueType !== 'number' && valueType !== 'boolean') return value;
+			var options = props.options;
+			var valueKey = props.valueKey;
+
+			if (!options) return;
+			for (var i = 0; i < options.length; i++) {
+				if (options[i][valueKey] === value) return options[i];
+			}
+		},
+
+		setValue: function setValue(value) {
+			var _this2 = this;
+
+			if (this.props.autoBlur) {
+				this.blurInput();
+			}
+			if (!this.props.onChange) return;
+			if (this.props.required) {
+				var required = this.handleRequired(value, this.props.multi);
+				this.setState({ required: required });
+			}
+			if (this.props.simpleValue && value) {
+				value = this.props.multi ? value.map(function (i) {
+					return i[_this2.props.valueKey];
+				}).join(this.props.delimiter) : value[this.props.valueKey];
+			}
+			this.props.onChange(value);
+		},
+
+		selectValue: function selectValue(value) {
+			var _this3 = this;
+
+			//NOTE: update value in the callback to make sure the input value is empty so that there are no styling issues (Chrome had issue otherwise)
+			this.hasScrolledToOption = false;
+			if (this.props.multi) {
+				this.setState({
+					inputValue: '',
+					focusedIndex: null
+				}, function () {
+					_this3.addValue(value);
+				});
+			} else {
+				this.setState({
+					isOpen: false,
+					inputValue: '',
+					isPseudoFocused: this.state.isFocused
+				}, function () {
+					_this3.setValue(value);
+				});
+			}
+		},
+
+		addValue: function addValue(value) {
+			var valueArray = this.getValueArray(this.props.value);
+			this.setValue(valueArray.concat(value));
+		},
+
+		popValue: function popValue() {
+			var valueArray = this.getValueArray(this.props.value);
+			if (!valueArray.length) return;
+			if (valueArray[valueArray.length - 1].clearableValue === false) return;
+			this.setValue(valueArray.slice(0, valueArray.length - 1));
+		},
+
+		removeValue: function removeValue(value) {
+			var valueArray = this.getValueArray(this.props.value);
+			this.setValue(valueArray.filter(function (i) {
+				return i !== value;
+			}));
+			this.focus();
+		},
+
+		clearValue: function clearValue(event) {
+			// if the event was triggered by a mousedown and not the primary
+			// button, ignore it.
+			if (event && event.type === 'mousedown' && event.button !== 0) {
+				return;
+			}
+			event.stopPropagation();
+			event.preventDefault();
+			this.setValue(this.getResetValue());
+			this.setState({
+				isOpen: false,
+				inputValue: ''
+			}, this.focus);
+		},
+
+		getResetValue: function getResetValue() {
+			if (this.props.resetValue !== undefined) {
+				return this.props.resetValue;
+			} else if (this.props.multi) {
+				return [];
+			} else {
+				return null;
+			}
+		},
+
+		focusOption: function focusOption(option) {
+			this.setState({
+				focusedOption: option
+			});
+		},
+
+		focusNextOption: function focusNextOption() {
+			this.focusAdjacentOption('next');
+		},
+
+		focusPreviousOption: function focusPreviousOption() {
+			this.focusAdjacentOption('previous');
+		},
+
+		focusPageUpOption: function focusPageUpOption() {
+			this.focusAdjacentOption('page_up');
+		},
+
+		focusPageDownOption: function focusPageDownOption() {
+			this.focusAdjacentOption('page_down');
+		},
+
+		focusStartOption: function focusStartOption() {
+			this.focusAdjacentOption('start');
+		},
+
+		focusEndOption: function focusEndOption() {
+			this.focusAdjacentOption('end');
+		},
+
+		focusAdjacentOption: function focusAdjacentOption(dir) {
+			var options = this._visibleOptions.map(function (option, index) {
+				return { option: option, index: index };
+			}).filter(function (option) {
+				return !option.option.disabled;
+			});
+			this._scrollToFocusedOptionOnUpdate = true;
+			if (!this.state.isOpen) {
+				this.setState({
+					isOpen: true,
+					inputValue: '',
+					focusedOption: this._focusedOption || options[dir === 'next' ? 0 : options.length - 1].option
+				});
+				return;
+			}
+			if (!options.length) return;
+			var focusedIndex = -1;
+			for (var i = 0; i < options.length; i++) {
+				if (this._focusedOption === options[i].option) {
+					focusedIndex = i;
+					break;
+				}
+			}
+			if (dir === 'next' && focusedIndex !== -1) {
+				focusedIndex = (focusedIndex + 1) % options.length;
+			} else if (dir === 'previous') {
+				if (focusedIndex > 0) {
+					focusedIndex = focusedIndex - 1;
+				} else {
+					focusedIndex = options.length - 1;
+				}
+			} else if (dir === 'start') {
+				focusedIndex = 0;
+			} else if (dir === 'end') {
+				focusedIndex = options.length - 1;
+			} else if (dir === 'page_up') {
+				var potentialIndex = focusedIndex - this.props.pageSize;
+				if (potentialIndex < 0) {
+					focusedIndex = 0;
+				} else {
+					focusedIndex = potentialIndex;
+				}
+			} else if (dir === 'page_down') {
+				var potentialIndex = focusedIndex + this.props.pageSize;
+				if (potentialIndex > options.length - 1) {
+					focusedIndex = options.length - 1;
+				} else {
+					focusedIndex = potentialIndex;
+				}
+			}
+
+			if (focusedIndex === -1) {
+				focusedIndex = 0;
+			}
+
+			this.setState({
+				focusedIndex: options[focusedIndex].index,
+				focusedOption: options[focusedIndex].option
+			});
+		},
+
+		getFocusedOption: function getFocusedOption() {
+			return this._focusedOption;
+		},
+
+		getInputValue: function getInputValue() {
+			return this.state.inputValue;
+		},
+
+		selectFocusedOption: function selectFocusedOption() {
+			if (this._focusedOption) {
+				return this.selectValue(this._focusedOption);
+			}
+		},
+
+		renderLoading: function renderLoading() {
+			if (!this.props.isLoading) return;
+			return _react2['default'].createElement(
+				'span',
+				{ className: 'Select-loading-zone', 'aria-hidden': 'true' },
+				_react2['default'].createElement('span', { className: 'Select-loading' })
+			);
+		},
+
+		renderValue: function renderValue(valueArray, isOpen) {
+			var _this4 = this;
+
+			var renderLabel = this.props.valueRenderer || this.getOptionLabel;
+			var ValueComponent = this.props.valueComponent;
+			if (!valueArray.length) {
+				return !this.state.inputValue ? _react2['default'].createElement(
+					'div',
+					{ className: 'Select-placeholder' },
+					this.props.placeholder
+				) : null;
+			}
+			var onClick = this.props.onValueClick ? this.handleValueClick : null;
+			if (this.props.multi) {
+				return valueArray.map(function (value, i) {
+					return _react2['default'].createElement(
+						ValueComponent,
+						{
+							id: _this4._instancePrefix + '-value-' + i,
+							instancePrefix: _this4._instancePrefix,
+							disabled: _this4.props.disabled || value.clearableValue === false,
+							key: 'value-' + i + '-' + value[_this4.props.valueKey],
+							onClick: onClick,
+							onRemove: _this4.removeValue,
+							value: value
+						},
+						renderLabel(value, i),
+						_react2['default'].createElement(
+							'span',
+							{ className: 'Select-aria-only' },
+							' '
+						)
+					);
+				});
+			} else if (!this.state.inputValue) {
+				if (isOpen) onClick = null;
+				return _react2['default'].createElement(
+					ValueComponent,
+					{
+						id: this._instancePrefix + '-value-item',
+						disabled: this.props.disabled,
+						instancePrefix: this._instancePrefix,
+						onClick: onClick,
+						value: valueArray[0]
+					},
+					renderLabel(valueArray[0])
+				);
+			}
+		},
+
+		renderInput: function renderInput(valueArray, focusedOptionIndex) {
+			var _this5 = this;
+
+			if (this.props.inputRenderer) {
+				return this.props.inputRenderer();
+			} else {
+				var _classNames;
+
+				var className = (0, _classnames2['default'])('Select-input', this.props.inputProps.className);
+				var isOpen = !!this.state.isOpen;
+
+				var ariaOwns = (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, this._instancePrefix + '-list', isOpen), _defineProperty(_classNames, this._instancePrefix + '-backspace-remove-message', this.props.multi && !this.props.disabled && this.state.isFocused && !this.state.inputValue), _classNames));
+
+				// TODO: Check how this project includes Object.assign()
+				var inputProps = _extends({}, this.props.inputProps, {
+					role: 'combobox',
+					'aria-expanded': '' + isOpen,
+					'aria-owns': ariaOwns,
+					'aria-haspopup': '' + isOpen,
+					'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
+					'aria-labelledby': this.props['aria-labelledby'],
+					'aria-label': this.props['aria-label'],
+					className: className,
+					tabIndex: this.props.tabIndex,
+					onBlur: this.handleInputBlur,
+					onChange: this.handleInputChange,
+					onFocus: this.handleInputFocus,
+					ref: function ref(_ref) {
+						return _this5.input = _ref;
+					},
+					required: this.state.required,
+					value: this.state.inputValue
+				});
+
+				if (this.props.disabled || !this.props.searchable) {
+					var _props$inputProps = this.props.inputProps;
+					var inputClassName = _props$inputProps.inputClassName;
+
+					var divProps = _objectWithoutProperties(_props$inputProps, ['inputClassName']);
+
+					return _react2['default'].createElement('div', _extends({}, divProps, {
+						role: 'combobox',
+						'aria-expanded': isOpen,
+						'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
+						'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
+						className: className,
+						tabIndex: this.props.tabIndex || 0,
+						onBlur: this.handleInputBlur,
+						onFocus: this.handleInputFocus,
+						ref: function (ref) {
+							return _this5.input = ref;
+						},
+						'aria-readonly': '' + !!this.props.disabled,
+						style: { border: 0, width: 1, display: 'inline-block' } }));
+				}
+
+				if (this.props.autosize) {
+					return _react2['default'].createElement(_reactInputAutosize2['default'], _extends({}, inputProps, { minWidth: '5px' }));
+				}
+				return _react2['default'].createElement(
+					'div',
+					{ className: className },
+					_react2['default'].createElement('input', inputProps)
+				);
+			}
+		},
+
+		renderClear: function renderClear() {
+			if (!this.props.clearable || !this.props.value || this.props.value === 0 || this.props.multi && !this.props.value.length || this.props.disabled || this.props.isLoading) return;
+			return _react2['default'].createElement(
+				'span',
+				{ className: 'Select-clear-zone', title: this.props.multi ? this.props.clearAllText : this.props.clearValueText,
+					'aria-label': this.props.multi ? this.props.clearAllText : this.props.clearValueText,
+					onMouseDown: this.clearValue,
+					onTouchStart: this.handleTouchStart,
+					onTouchMove: this.handleTouchMove,
+					onTouchEnd: this.handleTouchEndClearValue
+				},
+				_react2['default'].createElement('span', { className: 'Select-clear', dangerouslySetInnerHTML: { __html: '&times;' } })
+			);
+		},
+
+		renderArrow: function renderArrow() {
+			var onMouseDown = this.handleMouseDownOnArrow;
+			var arrow = this.props.arrowRenderer({ onMouseDown: onMouseDown });
+
+			return _react2['default'].createElement(
+				'span',
+				{
+					className: 'Select-arrow-zone',
+					onMouseDown: onMouseDown
+				},
+				arrow
+			);
+		},
+
+		filterOptions: function filterOptions(excludeOptions) {
+			var filterValue = this.state.inputValue;
+			var options = this.props.options || [];
+			if (this.props.filterOptions) {
+				// Maintain backwards compatibility with boolean attribute
+				var filterOptions = typeof this.props.filterOptions === 'function' ? this.props.filterOptions : _utilsDefaultFilterOptions2['default'];
+
+				return filterOptions(options, filterValue, excludeOptions, {
+					filterOption: this.props.filterOption,
+					ignoreAccents: this.props.ignoreAccents,
+					ignoreCase: this.props.ignoreCase,
+					labelKey: this.props.labelKey,
+					matchPos: this.props.matchPos,
+					matchProp: this.props.matchProp,
+					valueKey: this.props.valueKey
+				});
+			} else {
+				return options;
+			}
+		},
+
+		onOptionRef: function onOptionRef(ref, isFocused) {
+			if (isFocused) {
+				this.focused = ref;
+			}
+		},
+
+		renderMenu: function renderMenu(options, valueArray, focusedOption) {
+			if (options && options.length) {
+				return this.props.menuRenderer({
+					focusedOption: focusedOption,
+					focusOption: this.focusOption,
+					instancePrefix: this._instancePrefix,
+					labelKey: this.props.labelKey,
+					onFocus: this.focusOption,
+					onSelect: this.selectValue,
+					optionClassName: this.props.optionClassName,
+					optionComponent: this.props.optionComponent,
+					optionRenderer: this.props.optionRenderer || this.getOptionLabel,
+					options: options,
+					selectValue: this.selectValue,
+					valueArray: valueArray,
+					valueKey: this.props.valueKey,
+					onOptionRef: this.onOptionRef
+				});
+			} else if (this.props.noResultsText) {
+				return _react2['default'].createElement(
+					'div',
+					{ className: 'Select-noresults' },
+					this.props.noResultsText
+				);
+			} else {
+				return null;
+			}
+		},
+
+		renderHiddenField: function renderHiddenField(valueArray) {
+			var _this6 = this;
+
+			if (!this.props.name) return;
+			if (this.props.joinValues) {
+				var value = valueArray.map(function (i) {
+					return stringifyValue(i[_this6.props.valueKey]);
+				}).join(this.props.delimiter);
+				return _react2['default'].createElement('input', {
+					type: 'hidden',
+					ref: function (ref) {
+						return _this6.value = ref;
+					},
+					name: this.props.name,
+					value: value,
+					disabled: this.props.disabled });
+			}
+			return valueArray.map(function (item, index) {
+				return _react2['default'].createElement('input', { key: 'hidden.' + index,
+					type: 'hidden',
+					ref: 'value' + index,
+					name: _this6.props.name,
+					value: stringifyValue(item[_this6.props.valueKey]),
+					disabled: _this6.props.disabled });
+			});
+		},
+
+		getFocusableOptionIndex: function getFocusableOptionIndex(selectedOption) {
+			var options = this._visibleOptions;
+			if (!options.length) return null;
+
+			var focusedOption = this.state.focusedOption || selectedOption;
+			if (focusedOption && !focusedOption.disabled) {
+				var focusedOptionIndex = options.indexOf(focusedOption);
+				if (focusedOptionIndex !== -1) {
+					return focusedOptionIndex;
+				}
+			}
+
+			for (var i = 0; i < options.length; i++) {
+				if (!options[i].disabled) return i;
+			}
+			return null;
+		},
+
+		renderOuter: function renderOuter(options, valueArray, focusedOption) {
+			var _this7 = this;
+
+			var menu = this.renderMenu(options, valueArray, focusedOption);
+			if (!menu) {
+				return null;
+			}
+
+			return _react2['default'].createElement(
+				'div',
+				{ ref: function (ref) {
+						return _this7.menuContainer = ref;
+					}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
+				_react2['default'].createElement(
+					'div',
+					{ ref: function (ref) {
+							return _this7.menu = ref;
+						}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
+						style: this.props.menuStyle,
+						onScroll: this.handleMenuScroll,
+						onMouseDown: this.handleMouseDownOnMenu },
+					menu
+				)
+			);
+		},
+
+		render: function render() {
+			var _this8 = this;
+
+			var valueArray = this.getValueArray(this.props.value);
+			var options = this._visibleOptions = this.filterOptions(this.props.multi ? this.getValueArray(this.props.value) : null);
+			var isOpen = this.state.isOpen;
+			if (this.props.multi && !options.length && valueArray.length && !this.state.inputValue) isOpen = false;
+			var focusedOptionIndex = this.getFocusableOptionIndex(valueArray[0]);
+
+			var focusedOption = null;
+			if (focusedOptionIndex !== null) {
+				focusedOption = this._focusedOption = options[focusedOptionIndex];
+			} else {
+				focusedOption = this._focusedOption = null;
+			}
+			var className = (0, _classnames2['default'])('Select', this.props.className, {
+				'Select--multi': this.props.multi,
+				'Select--single': !this.props.multi,
+				'is-disabled': this.props.disabled,
+				'is-focused': this.state.isFocused,
+				'is-loading': this.props.isLoading,
+				'is-open': isOpen,
+				'is-pseudo-focused': this.state.isPseudoFocused,
+				'is-searchable': this.props.searchable,
+				'has-value': valueArray.length
+			});
+
+			var removeMessage = null;
+			if (this.props.multi && !this.props.disabled && valueArray.length && !this.state.inputValue && this.state.isFocused && this.props.backspaceRemoves) {
+				removeMessage = _react2['default'].createElement(
+					'span',
+					{ id: this._instancePrefix + '-backspace-remove-message', className: 'Select-aria-only', 'aria-live': 'assertive' },
+					this.props.backspaceToRemoveMessage.replace('{label}', valueArray[valueArray.length - 1][this.props.labelKey])
+				);
+			}
+
+			return _react2['default'].createElement(
+				'div',
+				{ ref: function (ref) {
+						return _this8.wrapper = ref;
+					},
+					className: className,
+					style: this.props.wrapperStyle },
+				this.renderHiddenField(valueArray),
+				_react2['default'].createElement(
+					'div',
+					{ ref: function (ref) {
+							return _this8.control = ref;
+						},
+						className: 'Select-control',
+						style: this.props.style,
+						onKeyDown: this.handleKeyDown,
+						onMouseDown: this.handleMouseDown,
+						onTouchEnd: this.handleTouchEnd,
+						onTouchStart: this.handleTouchStart,
+						onTouchMove: this.handleTouchMove
+					},
+					_react2['default'].createElement(
+						'span',
+						{ className: 'Select-multi-value-wrapper', id: this._instancePrefix + '-value' },
+						this.renderValue(valueArray, isOpen),
+						this.renderInput(valueArray, focusedOptionIndex)
+					),
+					removeMessage,
+					this.renderLoading(),
+					this.renderClear(),
+					this.renderArrow()
+				),
+				isOpen ? this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption) : null
+			);
+		}
+
+	});
+
+	exports['default'] = Select;
+	module.exports = exports['default'];
+
+/***/ },
+/* 259 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(1);
+
+	var sizerStyle = { position: 'absolute', top: 0, left: 0, visibility: 'hidden', height: 0, overflow: 'scroll', whiteSpace: 'pre' };
+
+	var AutosizeInput = React.createClass({
+		displayName: 'AutosizeInput',
+
+		propTypes: {
+			className: React.PropTypes.string, // className for the outer element
+			defaultValue: React.PropTypes.any, // default field value
+			inputClassName: React.PropTypes.string, // className for the input element
+			inputStyle: React.PropTypes.object, // css styles for the input element
+			minWidth: React.PropTypes.oneOfType([// minimum width for input element
+			React.PropTypes.number, React.PropTypes.string]),
+			onChange: React.PropTypes.func, // onChange handler: function(newValue) {}
+			placeholder: React.PropTypes.string, // placeholder text
+			placeholderIsMinWidth: React.PropTypes.bool, // don't collapse size to less than the placeholder
+			style: React.PropTypes.object, // css styles for the outer element
+			value: React.PropTypes.any },
+		// field value
+		getDefaultProps: function getDefaultProps() {
+			return {
+				minWidth: 1
+			};
+		},
+		getInitialState: function getInitialState() {
+			return {
+				inputWidth: this.props.minWidth
+			};
+		},
+		componentDidMount: function componentDidMount() {
+			this.copyInputStyles();
+			this.updateInputWidth();
+		},
+		componentDidUpdate: function componentDidUpdate() {
+			this.updateInputWidth();
+		},
+		copyInputStyles: function copyInputStyles() {
+			if (!this.isMounted() || !window.getComputedStyle) {
+				return;
+			}
+			var inputStyle = window.getComputedStyle(this.refs.input);
+			if (!inputStyle) {
+				return;
+			}
+			var widthNode = this.refs.sizer;
+			widthNode.style.fontSize = inputStyle.fontSize;
+			widthNode.style.fontFamily = inputStyle.fontFamily;
+			widthNode.style.fontWeight = inputStyle.fontWeight;
+			widthNode.style.fontStyle = inputStyle.fontStyle;
+			widthNode.style.letterSpacing = inputStyle.letterSpacing;
+			if (this.props.placeholder) {
+				var placeholderNode = this.refs.placeholderSizer;
+				placeholderNode.style.fontSize = inputStyle.fontSize;
+				placeholderNode.style.fontFamily = inputStyle.fontFamily;
+				placeholderNode.style.fontWeight = inputStyle.fontWeight;
+				placeholderNode.style.fontStyle = inputStyle.fontStyle;
+				placeholderNode.style.letterSpacing = inputStyle.letterSpacing;
+			}
+		},
+		updateInputWidth: function updateInputWidth() {
+			if (!this.isMounted() || typeof this.refs.sizer.scrollWidth === 'undefined') {
+				return;
+			}
+			var newInputWidth = undefined;
+			if (this.props.placeholder && (!this.props.value || this.props.value && this.props.placeholderIsMinWidth)) {
+				newInputWidth = Math.max(this.refs.sizer.scrollWidth, this.refs.placeholderSizer.scrollWidth) + 2;
+			} else {
+				newInputWidth = this.refs.sizer.scrollWidth + 2;
+			}
+			if (newInputWidth < this.props.minWidth) {
+				newInputWidth = this.props.minWidth;
+			}
+			if (newInputWidth !== this.state.inputWidth) {
+				this.setState({
+					inputWidth: newInputWidth
+				});
+			}
+		},
+		getInput: function getInput() {
+			return this.refs.input;
+		},
+		focus: function focus() {
+			this.refs.input.focus();
+		},
+		blur: function blur() {
+			this.refs.input.blur();
+		},
+		select: function select() {
+			this.refs.input.select();
+		},
+		render: function render() {
+			var sizerValue = this.props.defaultValue || this.props.value || '';
+			var wrapperStyle = this.props.style || {};
+			if (!wrapperStyle.display) wrapperStyle.display = 'inline-block';
+			var inputStyle = _extends({}, this.props.inputStyle);
+			inputStyle.width = this.state.inputWidth + 'px';
+			inputStyle.boxSizing = 'content-box';
+			var inputProps = _extends({}, this.props);
+			inputProps.className = this.props.inputClassName;
+			inputProps.style = inputStyle;
+			// ensure props meant for `AutosizeInput` don't end up on the `input`
+			delete inputProps.inputClassName;
+			delete inputProps.inputStyle;
+			delete inputProps.minWidth;
+			delete inputProps.placeholderIsMinWidth;
+			return React.createElement(
+				'div',
+				{ className: this.props.className, style: wrapperStyle },
+				React.createElement('input', _extends({}, inputProps, { ref: 'input' })),
+				React.createElement(
+					'div',
+					{ ref: 'sizer', style: sizerStyle },
+					sizerValue
+				),
+				this.props.placeholder ? React.createElement(
+					'div',
+					{ ref: 'placeholderSizer', style: sizerStyle },
+					this.props.placeholder
+				) : null
+			);
+		}
+	});
+
+	module.exports = AutosizeInput;
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports["default"] = arrowRenderer;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function arrowRenderer(_ref) {
+		var onMouseDown = _ref.onMouseDown;
+
+		return _react2["default"].createElement("span", {
+			className: "Select-arrow",
+			onMouseDown: onMouseDown
+		});
+	}
+
+	;
+	module.exports = exports["default"];
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _stripDiacritics = __webpack_require__(263);
+
+	var _stripDiacritics2 = _interopRequireDefault(_stripDiacritics);
+
+	function filterOptions(options, filterValue, excludeOptions, props) {
+		var _this = this;
+
+		if (props.ignoreAccents) {
+			filterValue = (0, _stripDiacritics2['default'])(filterValue);
+		}
+
+		if (props.ignoreCase) {
+			filterValue = filterValue.toLowerCase();
+		}
+
+		if (excludeOptions) excludeOptions = excludeOptions.map(function (i) {
+			return i[props.valueKey];
+		});
+
+		return options.filter(function (option) {
+			if (excludeOptions && excludeOptions.indexOf(option[props.valueKey]) > -1) return false;
+			if (props.filterOption) return props.filterOption.call(_this, option, filterValue);
+			if (!filterValue) return true;
+			var valueTest = String(option[props.valueKey]);
+			var labelTest = String(option[props.labelKey]);
+			if (props.ignoreAccents) {
+				if (props.matchProp !== 'label') valueTest = (0, _stripDiacritics2['default'])(valueTest);
+				if (props.matchProp !== 'value') labelTest = (0, _stripDiacritics2['default'])(labelTest);
+			}
+			if (props.ignoreCase) {
+				if (props.matchProp !== 'label') valueTest = valueTest.toLowerCase();
+				if (props.matchProp !== 'value') labelTest = labelTest.toLowerCase();
+			}
+			return props.matchPos === 'start' ? props.matchProp !== 'label' && valueTest.substr(0, filterValue.length) === filterValue || props.matchProp !== 'value' && labelTest.substr(0, filterValue.length) === filterValue : props.matchProp !== 'label' && valueTest.indexOf(filterValue) >= 0 || props.matchProp !== 'value' && labelTest.indexOf(filterValue) >= 0;
+		});
+	}
+
+	module.exports = filterOptions;
+
+/***/ },
+/* 263 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var map = [{ 'base': 'A', 'letters': /[\u0041\u24B6\uFF21\u00C0\u00C1\u00C2\u1EA6\u1EA4\u1EAA\u1EA8\u00C3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\u00C4\u01DE\u1EA2\u00C5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F]/g }, { 'base': 'AA', 'letters': /[\uA732]/g }, { 'base': 'AE', 'letters': /[\u00C6\u01FC\u01E2]/g }, { 'base': 'AO', 'letters': /[\uA734]/g }, { 'base': 'AU', 'letters': /[\uA736]/g }, { 'base': 'AV', 'letters': /[\uA738\uA73A]/g }, { 'base': 'AY', 'letters': /[\uA73C]/g }, { 'base': 'B', 'letters': /[\u0042\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181]/g }, { 'base': 'C', 'letters': /[\u0043\u24B8\uFF23\u0106\u0108\u010A\u010C\u00C7\u1E08\u0187\u023B\uA73E]/g }, { 'base': 'D', 'letters': /[\u0044\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779]/g }, { 'base': 'DZ', 'letters': /[\u01F1\u01C4]/g }, { 'base': 'Dz', 'letters': /[\u01F2\u01C5]/g }, { 'base': 'E', 'letters': /[\u0045\u24BA\uFF25\u00C8\u00C9\u00CA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\u00CB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E]/g }, { 'base': 'F', 'letters': /[\u0046\u24BB\uFF26\u1E1E\u0191\uA77B]/g }, { 'base': 'G', 'letters': /[\u0047\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E]/g }, { 'base': 'H', 'letters': /[\u0048\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D]/g }, { 'base': 'I', 'letters': /[\u0049\u24BE\uFF29\u00CC\u00CD\u00CE\u0128\u012A\u012C\u0130\u00CF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197]/g }, { 'base': 'J', 'letters': /[\u004A\u24BF\uFF2A\u0134\u0248]/g }, { 'base': 'K', 'letters': /[\u004B\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2]/g }, { 'base': 'L', 'letters': /[\u004C\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780]/g }, { 'base': 'LJ', 'letters': /[\u01C7]/g }, { 'base': 'Lj', 'letters': /[\u01C8]/g }, { 'base': 'M', 'letters': /[\u004D\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C]/g }, { 'base': 'N', 'letters': /[\u004E\u24C3\uFF2E\u01F8\u0143\u00D1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4]/g }, { 'base': 'NJ', 'letters': /[\u01CA]/g }, { 'base': 'Nj', 'letters': /[\u01CB]/g }, { 'base': 'O', 'letters': /[\u004F\u24C4\uFF2F\u00D2\u00D3\u00D4\u1ED2\u1ED0\u1ED6\u1ED4\u00D5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\u00D6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\u00D8\u01FE\u0186\u019F\uA74A\uA74C]/g }, { 'base': 'OI', 'letters': /[\u01A2]/g }, { 'base': 'OO', 'letters': /[\uA74E]/g }, { 'base': 'OU', 'letters': /[\u0222]/g }, { 'base': 'P', 'letters': /[\u0050\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754]/g }, { 'base': 'Q', 'letters': /[\u0051\u24C6\uFF31\uA756\uA758\u024A]/g }, { 'base': 'R', 'letters': /[\u0052\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782]/g }, { 'base': 'S', 'letters': /[\u0053\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784]/g }, { 'base': 'T', 'letters': /[\u0054\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786]/g }, { 'base': 'TZ', 'letters': /[\uA728]/g }, { 'base': 'U', 'letters': /[\u0055\u24CA\uFF35\u00D9\u00DA\u00DB\u0168\u1E78\u016A\u1E7A\u016C\u00DC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244]/g }, { 'base': 'V', 'letters': /[\u0056\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245]/g }, { 'base': 'VY', 'letters': /[\uA760]/g }, { 'base': 'W', 'letters': /[\u0057\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72]/g }, { 'base': 'X', 'letters': /[\u0058\u24CD\uFF38\u1E8A\u1E8C]/g }, { 'base': 'Y', 'letters': /[\u0059\u24CE\uFF39\u1EF2\u00DD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE]/g }, { 'base': 'Z', 'letters': /[\u005A\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762]/g }, { 'base': 'a', 'letters': /[\u0061\u24D0\uFF41\u1E9A\u00E0\u00E1\u00E2\u1EA7\u1EA5\u1EAB\u1EA9\u00E3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\u00E4\u01DF\u1EA3\u00E5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250]/g }, { 'base': 'aa', 'letters': /[\uA733]/g }, { 'base': 'ae', 'letters': /[\u00E6\u01FD\u01E3]/g }, { 'base': 'ao', 'letters': /[\uA735]/g }, { 'base': 'au', 'letters': /[\uA737]/g }, { 'base': 'av', 'letters': /[\uA739\uA73B]/g }, { 'base': 'ay', 'letters': /[\uA73D]/g }, { 'base': 'b', 'letters': /[\u0062\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253]/g }, { 'base': 'c', 'letters': /[\u0063\u24D2\uFF43\u0107\u0109\u010B\u010D\u00E7\u1E09\u0188\u023C\uA73F\u2184]/g }, { 'base': 'd', 'letters': /[\u0064\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A]/g }, { 'base': 'dz', 'letters': /[\u01F3\u01C6]/g }, { 'base': 'e', 'letters': /[\u0065\u24D4\uFF45\u00E8\u00E9\u00EA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\u00EB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD]/g }, { 'base': 'f', 'letters': /[\u0066\u24D5\uFF46\u1E1F\u0192\uA77C]/g }, { 'base': 'g', 'letters': /[\u0067\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F]/g }, { 'base': 'h', 'letters': /[\u0068\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265]/g }, { 'base': 'hv', 'letters': /[\u0195]/g }, { 'base': 'i', 'letters': /[\u0069\u24D8\uFF49\u00EC\u00ED\u00EE\u0129\u012B\u012D\u00EF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131]/g }, { 'base': 'j', 'letters': /[\u006A\u24D9\uFF4A\u0135\u01F0\u0249]/g }, { 'base': 'k', 'letters': /[\u006B\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3]/g }, { 'base': 'l', 'letters': /[\u006C\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747]/g }, { 'base': 'lj', 'letters': /[\u01C9]/g }, { 'base': 'm', 'letters': /[\u006D\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F]/g }, { 'base': 'n', 'letters': /[\u006E\u24DD\uFF4E\u01F9\u0144\u00F1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5]/g }, { 'base': 'nj', 'letters': /[\u01CC]/g }, { 'base': 'o', 'letters': /[\u006F\u24DE\uFF4F\u00F2\u00F3\u00F4\u1ED3\u1ED1\u1ED7\u1ED5\u00F5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\u00F6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\u00F8\u01FF\u0254\uA74B\uA74D\u0275]/g }, { 'base': 'oi', 'letters': /[\u01A3]/g }, { 'base': 'ou', 'letters': /[\u0223]/g }, { 'base': 'oo', 'letters': /[\uA74F]/g }, { 'base': 'p', 'letters': /[\u0070\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755]/g }, { 'base': 'q', 'letters': /[\u0071\u24E0\uFF51\u024B\uA757\uA759]/g }, { 'base': 'r', 'letters': /[\u0072\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783]/g }, { 'base': 's', 'letters': /[\u0073\u24E2\uFF53\u00DF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B]/g }, { 'base': 't', 'letters': /[\u0074\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787]/g }, { 'base': 'tz', 'letters': /[\uA729]/g }, { 'base': 'u', 'letters': /[\u0075\u24E4\uFF55\u00F9\u00FA\u00FB\u0169\u1E79\u016B\u1E7B\u016D\u00FC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289]/g }, { 'base': 'v', 'letters': /[\u0076\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C]/g }, { 'base': 'vy', 'letters': /[\uA761]/g }, { 'base': 'w', 'letters': /[\u0077\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73]/g }, { 'base': 'x', 'letters': /[\u0078\u24E7\uFF58\u1E8B\u1E8D]/g }, { 'base': 'y', 'letters': /[\u0079\u24E8\uFF59\u1EF3\u00FD\u0177\u1EF9\u0233\u1E8F\u00FF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF]/g }, { 'base': 'z', 'letters': /[\u007A\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763]/g }];
+
+	module.exports = function stripDiacritics(str) {
+		for (var i = 0; i < map.length; i++) {
+			str = str.replace(map[i].letters, map[i].base);
+		}
+		return str;
+	};
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _classnames = __webpack_require__(260);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function menuRenderer(_ref) {
+		var focusedOption = _ref.focusedOption;
+		var instancePrefix = _ref.instancePrefix;
+		var labelKey = _ref.labelKey;
+		var onFocus = _ref.onFocus;
+		var onSelect = _ref.onSelect;
+		var optionClassName = _ref.optionClassName;
+		var optionComponent = _ref.optionComponent;
+		var optionRenderer = _ref.optionRenderer;
+		var options = _ref.options;
+		var valueArray = _ref.valueArray;
+		var valueKey = _ref.valueKey;
+		var onOptionRef = _ref.onOptionRef;
+
+		var Option = optionComponent;
+
+		return options.map(function (option, i) {
+			var isSelected = valueArray && valueArray.indexOf(option) > -1;
+			var isFocused = option === focusedOption;
+			var optionClass = (0, _classnames2['default'])(optionClassName, {
+				'Select-option': true,
+				'is-selected': isSelected,
+				'is-focused': isFocused,
+				'is-disabled': option.disabled
+			});
+
+			return _react2['default'].createElement(
+				Option,
+				{
+					className: optionClass,
+					instancePrefix: instancePrefix,
+					isDisabled: option.disabled,
+					isFocused: isFocused,
+					isSelected: isSelected,
+					key: 'option-' + i + '-' + option[valueKey],
+					onFocus: onFocus,
+					onSelect: onSelect,
+					option: option,
+					optionIndex: i,
+					ref: function (ref) {
+						onOptionRef(ref, isFocused);
+					}
+				},
+				optionRenderer(option, i)
+			);
+		});
+	}
+
+	module.exports = menuRenderer;
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Select = __webpack_require__(258);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	var _utilsStripDiacritics = __webpack_require__(263);
+
+	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
+
+	var propTypes = {
+		autoload: _react2['default'].PropTypes.bool.isRequired, // automatically call the `loadOptions` prop on-mount; defaults to true
+		cache: _react2['default'].PropTypes.any, // object to use to cache results; set to null/false to disable caching
+		children: _react2['default'].PropTypes.func.isRequired, // Child function responsible for creating the inner Select component; (props: Object): PropTypes.element
+		ignoreAccents: _react2['default'].PropTypes.bool, // strip diacritics when filtering; defaults to true
+		ignoreCase: _react2['default'].PropTypes.bool, // perform case-insensitive filtering; defaults to true
+		loadingPlaceholder: _react.PropTypes.string.isRequired, // replaces the placeholder while options are loading
+		loadOptions: _react2['default'].PropTypes.func.isRequired, // callback to load options asynchronously; (inputValue: string, callback: Function): ?Promise
+		options: _react.PropTypes.array.isRequired, // array of options
+		placeholder: _react2['default'].PropTypes.oneOfType([// field placeholder, displayed when there's no value (shared with Select)
+		_react2['default'].PropTypes.string, _react2['default'].PropTypes.node]),
+		searchPromptText: _react2['default'].PropTypes.oneOfType([// label to prompt for search input
+		_react2['default'].PropTypes.string, _react2['default'].PropTypes.node])
+	};
+
+	var defaultProps = {
+		autoload: true,
+		cache: {},
+		children: defaultChildren,
+		ignoreAccents: true,
+		ignoreCase: true,
+		loadingPlaceholder: 'Loading...',
+		options: [],
+		searchPromptText: 'Type to search'
+	};
+
+	var Async = (function (_Component) {
+		_inherits(Async, _Component);
+
+		function Async(props, context) {
+			_classCallCheck(this, Async);
+
+			_get(Object.getPrototypeOf(Async.prototype), 'constructor', this).call(this, props, context);
+
+			this.state = {
+				isLoading: false,
+				options: props.options
+			};
+
+			this._onInputChange = this._onInputChange.bind(this);
+		}
+
+		_createClass(Async, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var autoload = this.props.autoload;
+
+				if (autoload) {
+					this.loadOptions('');
+				}
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(nextProps, nextState) {
+				var _this = this;
+
+				var propertiesToSync = ['options'];
+				propertiesToSync.forEach(function (prop) {
+					if (_this.props[prop] !== nextProps[prop]) {
+						_this.setState(_defineProperty({}, prop, nextProps[prop]));
+					}
+				});
+			}
+		}, {
+			key: 'loadOptions',
+			value: function loadOptions(inputValue) {
+				var _this2 = this;
+
+				var _props = this.props;
+				var cache = _props.cache;
+				var loadOptions = _props.loadOptions;
+
+				if (cache && cache.hasOwnProperty(inputValue)) {
+					this.setState({
+						options: cache[inputValue]
+					});
+
+					return;
+				}
+
+				var callback = function callback(error, data) {
+					if (callback === _this2._callback) {
+						_this2._callback = null;
+
+						var options = data && data.options || [];
+
+						if (cache) {
+							cache[inputValue] = options;
+						}
+
+						_this2.setState({
+							isLoading: false,
+							options: options
+						});
+					}
+				};
+
+				// Ignore all but the most recent request
+				this._callback = callback;
+
+				var promise = loadOptions(inputValue, callback);
+				if (promise) {
+					promise.then(function (data) {
+						return callback(null, data);
+					}, function (error) {
+						return callback(error);
+					});
+				}
+
+				if (this._callback && !this.state.isLoading) {
+					this.setState({
+						isLoading: true
+					});
+				}
+
+				return inputValue;
+			}
+		}, {
+			key: '_onInputChange',
+			value: function _onInputChange(inputValue) {
+				var _props2 = this.props;
+				var ignoreAccents = _props2.ignoreAccents;
+				var ignoreCase = _props2.ignoreCase;
+
+				if (ignoreAccents) {
+					inputValue = (0, _utilsStripDiacritics2['default'])(inputValue);
+				}
+
+				if (ignoreCase) {
+					inputValue = inputValue.toLowerCase();
+				}
+
+				return this.loadOptions(inputValue);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _props3 = this.props;
+				var children = _props3.children;
+				var loadingPlaceholder = _props3.loadingPlaceholder;
+				var placeholder = _props3.placeholder;
+				var searchPromptText = _props3.searchPromptText;
+				var _state = this.state;
+				var isLoading = _state.isLoading;
+				var options = _state.options;
+
+				var props = {
+					noResultsText: isLoading ? loadingPlaceholder : searchPromptText,
+					placeholder: isLoading ? loadingPlaceholder : placeholder,
+					options: isLoading ? [] : options
+				};
+
+				return children(_extends({}, this.props, props, {
+					isLoading: isLoading,
+					onInputChange: this._onInputChange
+				}));
+			}
+		}]);
+
+		return Async;
+	})(_react.Component);
+
+	exports['default'] = Async;
+
+	Async.propTypes = propTypes;
+	Async.defaultProps = defaultProps;
+
+	function defaultChildren(props) {
+		return _react2['default'].createElement(_Select2['default'], props);
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Select = __webpack_require__(258);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	var AsyncCreatable = _react2['default'].createClass({
+		displayName: 'AsyncCreatableSelect',
+
+		render: function render() {
+			var _this = this;
+
+			return _react2['default'].createElement(
+				_Select2['default'].Async,
+				this.props,
+				function (asyncProps) {
+					return _react2['default'].createElement(
+						_Select2['default'].Creatable,
+						_this.props,
+						function (creatableProps) {
+							return _react2['default'].createElement(_Select2['default'], _extends({}, asyncProps, creatableProps, {
+								onInputChange: function (input) {
+									creatableProps.onInputChange(input);
+									return asyncProps.onInputChange(input);
+								}
+							}));
+						}
+					);
+				}
+			);
+		}
+	});
+
+	module.exports = AsyncCreatable;
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Select = __webpack_require__(258);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	var _utilsDefaultFilterOptions = __webpack_require__(262);
+
+	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
+
+	var _utilsDefaultMenuRenderer = __webpack_require__(264);
+
+	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
+
+	var Creatable = _react2['default'].createClass({
+		displayName: 'CreatableSelect',
+
+		propTypes: {
+			// Child function responsible for creating the inner Select component
+			// This component can be used to compose HOCs (eg Creatable and Async)
+			// (props: Object): PropTypes.element
+			children: _react2['default'].PropTypes.func,
+
+			// See Select.propTypes.filterOptions
+			filterOptions: _react2['default'].PropTypes.any,
+
+			// Searches for any matching option within the set of options.
+			// This function prevents duplicate options from being created.
+			// ({ option: Object, options: Array, labelKey: string, valueKey: string }): boolean
+			isOptionUnique: _react2['default'].PropTypes.func,
+
+			// Determines if the current input text represents a valid option.
+			// ({ label: string }): boolean
+			isValidNewOption: _react2['default'].PropTypes.func,
+
+			// See Select.propTypes.menuRenderer
+			menuRenderer: _react2['default'].PropTypes.any,
+
+			// Factory to create new option.
+			// ({ label: string, labelKey: string, valueKey: string }): Object
+			newOptionCreator: _react2['default'].PropTypes.func,
+
+			// See Select.propTypes.options
+			options: _react2['default'].PropTypes.array,
+
+			// Creates prompt/placeholder option text.
+			// (filterText: string): string
+			promptTextCreator: _react2['default'].PropTypes.func,
+
+			// Decides if a keyDown event (eg its `keyCode`) should result in the creation of a new option.
+			shouldKeyDownEventCreateNewOption: _react2['default'].PropTypes.func
+		},
+
+		// Default prop methods
+		statics: {
+			isOptionUnique: isOptionUnique,
+			isValidNewOption: isValidNewOption,
+			newOptionCreator: newOptionCreator,
+			promptTextCreator: promptTextCreator,
+			shouldKeyDownEventCreateNewOption: shouldKeyDownEventCreateNewOption
+		},
+
+		getDefaultProps: function getDefaultProps() {
+			return {
+				filterOptions: _utilsDefaultFilterOptions2['default'],
+				isOptionUnique: isOptionUnique,
+				isValidNewOption: isValidNewOption,
+				menuRenderer: _utilsDefaultMenuRenderer2['default'],
+				newOptionCreator: newOptionCreator,
+				promptTextCreator: promptTextCreator,
+				shouldKeyDownEventCreateNewOption: shouldKeyDownEventCreateNewOption
+			};
+		},
+
+		createNewOption: function createNewOption() {
+			var _props = this.props;
+			var isValidNewOption = _props.isValidNewOption;
+			var newOptionCreator = _props.newOptionCreator;
+			var _props$options = _props.options;
+			var options = _props$options === undefined ? [] : _props$options;
+			var shouldKeyDownEventCreateNewOption = _props.shouldKeyDownEventCreateNewOption;
+
+			if (isValidNewOption({ label: this.inputValue })) {
+				var option = newOptionCreator({ label: this.inputValue, labelKey: this.labelKey, valueKey: this.valueKey });
+				var _isOptionUnique = this.isOptionUnique({ option: option });
+
+				// Don't add the same option twice.
+				if (_isOptionUnique) {
+					options.unshift(option);
+
+					this.select.selectValue(option);
+				}
+			}
+		},
+
+		filterOptions: function filterOptions() {
+			var _props2 = this.props;
+			var filterOptions = _props2.filterOptions;
+			var isValidNewOption = _props2.isValidNewOption;
+			var options = _props2.options;
+			var promptTextCreator = _props2.promptTextCreator;
+
+			// TRICKY Check currently selected options as well.
+			// Don't display a create-prompt for a value that's selected.
+			// This covers async edge-cases where a newly-created Option isn't yet in the async-loaded array.
+			var excludeOptions = arguments[2] || [];
+
+			var filteredOptions = filterOptions.apply(undefined, arguments) || [];
+
+			if (isValidNewOption({ label: this.inputValue })) {
+				var _newOptionCreator = this.props.newOptionCreator;
+
+				var option = _newOptionCreator({
+					label: this.inputValue,
+					labelKey: this.labelKey,
+					valueKey: this.valueKey
+				});
+
+				// TRICKY Compare to all options (not just filtered options) in case option has already been selected).
+				// For multi-selects, this would remove it from the filtered list.
+				var _isOptionUnique2 = this.isOptionUnique({
+					option: option,
+					options: excludeOptions.concat(filteredOptions)
+				});
+
+				if (_isOptionUnique2) {
+					var _prompt = promptTextCreator(this.inputValue);
+
+					this._createPlaceholderOption = _newOptionCreator({
+						label: _prompt,
+						labelKey: this.labelKey,
+						valueKey: this.valueKey
+					});
+
+					filteredOptions.unshift(this._createPlaceholderOption);
+				}
+			}
+
+			return filteredOptions;
+		},
+
+		isOptionUnique: function isOptionUnique(_ref2) {
+			var option = _ref2.option;
+			var options = _ref2.options;
+			var isOptionUnique = this.props.isOptionUnique;
+
+			options = options || this.select.filterOptions();
+
+			return isOptionUnique({
+				labelKey: this.labelKey,
+				option: option,
+				options: options,
+				valueKey: this.valueKey
+			});
+		},
+
+		menuRenderer: function menuRenderer(params) {
+			var menuRenderer = this.props.menuRenderer;
+
+			return menuRenderer(_extends({}, params, {
+				onSelect: this.onOptionSelect
+			}));
+		},
+
+		onInputChange: function onInputChange(input) {
+			// This value may be needed in between Select mounts (when this.select is null)
+			this.inputValue = input;
+		},
+
+		onInputKeyDown: function onInputKeyDown(event) {
+			var shouldKeyDownEventCreateNewOption = this.props.shouldKeyDownEventCreateNewOption;
+
+			var focusedOption = this.select.getFocusedOption();
+
+			if (focusedOption && focusedOption === this._createPlaceholderOption && shouldKeyDownEventCreateNewOption({ keyCode: event.keyCode })) {
+				this.createNewOption();
+
+				// Prevent decorated Select from doing anything additional with this keyDown event
+				event.preventDefault();
+			}
+		},
+
+		onOptionSelect: function onOptionSelect(option, event) {
+			if (option === this._createPlaceholderOption) {
+				this.createNewOption();
+			} else {
+				this.select.selectValue(option);
+			}
+		},
+
+		render: function render() {
+			var _this = this;
+
+			var _props3 = this.props;
+			var _props3$children = _props3.children;
+			var children = _props3$children === undefined ? defaultChildren : _props3$children;
+			var newOptionCreator = _props3.newOptionCreator;
+			var shouldKeyDownEventCreateNewOption = _props3.shouldKeyDownEventCreateNewOption;
+
+			var restProps = _objectWithoutProperties(_props3, ['children', 'newOptionCreator', 'shouldKeyDownEventCreateNewOption']);
+
+			var props = _extends({}, restProps, {
+				allowCreate: true,
+				filterOptions: this.filterOptions,
+				menuRenderer: this.menuRenderer,
+				onInputChange: this.onInputChange,
+				onInputKeyDown: this.onInputKeyDown,
+				ref: function ref(_ref) {
+					_this.select = _ref;
+
+					// These values may be needed in between Select mounts (when this.select is null)
+					if (_ref) {
+						_this.labelKey = _ref.props.labelKey;
+						_this.valueKey = _ref.props.valueKey;
+					}
+				}
+			});
+
+			return children(props);
+		}
+	});
+
+	function defaultChildren(props) {
+		return _react2['default'].createElement(_Select2['default'], props);
+	};
+
+	function isOptionUnique(_ref3) {
+		var option = _ref3.option;
+		var options = _ref3.options;
+		var labelKey = _ref3.labelKey;
+		var valueKey = _ref3.valueKey;
+
+		return options.filter(function (existingOption) {
+			return existingOption[labelKey] === option[labelKey] || existingOption[valueKey] === option[valueKey];
+		}).length === 0;
+	};
+
+	function isValidNewOption(_ref4) {
+		var label = _ref4.label;
+
+		return !!label;
+	};
+
+	function newOptionCreator(_ref5) {
+		var label = _ref5.label;
+		var labelKey = _ref5.labelKey;
+		var valueKey = _ref5.valueKey;
+
+		var option = {};
+		option[valueKey] = label;
+		option[labelKey] = label;
+		option.className = 'Select-create-option-placeholder';
+		return option;
+	};
+
+	function promptTextCreator(label) {
+		return 'Create option "' + label + '"';
+	}
+
+	function shouldKeyDownEventCreateNewOption(_ref6) {
+		var keyCode = _ref6.keyCode;
+
+		switch (keyCode) {
+			case 9: // TAB
+			case 13: // ENTER
+			case 188:
+				// COMMA
+				return true;
+		}
+
+		return false;
+	};
+
+	module.exports = Creatable;
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(260);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var Option = _react2['default'].createClass({
+		displayName: 'Option',
+
+		propTypes: {
+			children: _react2['default'].PropTypes.node,
+			className: _react2['default'].PropTypes.string, // className (based on mouse position)
+			instancePrefix: _react2['default'].PropTypes.string.isRequired, // unique prefix for the ids (used for aria)
+			isDisabled: _react2['default'].PropTypes.bool, // the option is disabled
+			isFocused: _react2['default'].PropTypes.bool, // the option is focused
+			isSelected: _react2['default'].PropTypes.bool, // the option is selected
+			onFocus: _react2['default'].PropTypes.func, // method to handle mouseEnter on option element
+			onSelect: _react2['default'].PropTypes.func, // method to handle click on option element
+			onUnfocus: _react2['default'].PropTypes.func, // method to handle mouseLeave on option element
+			option: _react2['default'].PropTypes.object.isRequired, // object that is base for that option
+			optionIndex: _react2['default'].PropTypes.number },
+		// index of the option, used to generate unique ids for aria
+		blockEvent: function blockEvent(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			if (event.target.tagName !== 'A' || !('href' in event.target)) {
+				return;
+			}
+			if (event.target.target) {
+				window.open(event.target.href, event.target.target);
+			} else {
+				window.location.href = event.target.href;
+			}
+		},
+
+		handleMouseDown: function handleMouseDown(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			this.props.onSelect(this.props.option, event);
+		},
+
+		handleMouseEnter: function handleMouseEnter(event) {
+			this.onFocus(event);
+		},
+
+		handleMouseMove: function handleMouseMove(event) {
+			this.onFocus(event);
+		},
+
+		handleTouchEnd: function handleTouchEnd(event) {
+			// Check if the view is being dragged, In this case
+			// we don't want to fire the click event (because the user only wants to scroll)
+			if (this.dragging) return;
+
+			this.handleMouseDown(event);
+		},
+
+		handleTouchMove: function handleTouchMove(event) {
+			// Set a flag that the view is being dragged
+			this.dragging = true;
+		},
+
+		handleTouchStart: function handleTouchStart(event) {
+			// Set a flag that the view is not being dragged
+			this.dragging = false;
+		},
+
+		onFocus: function onFocus(event) {
+			if (!this.props.isFocused) {
+				this.props.onFocus(this.props.option, event);
+			}
+		},
+		render: function render() {
+			var _props = this.props;
+			var option = _props.option;
+			var instancePrefix = _props.instancePrefix;
+			var optionIndex = _props.optionIndex;
+
+			var className = (0, _classnames2['default'])(this.props.className, option.className);
+
+			return option.disabled ? _react2['default'].createElement(
+				'div',
+				{ className: className,
+					onMouseDown: this.blockEvent,
+					onClick: this.blockEvent },
+				this.props.children
+			) : _react2['default'].createElement(
+				'div',
+				{ className: className,
+					style: option.style,
+					role: 'option',
+					onMouseDown: this.handleMouseDown,
+					onMouseEnter: this.handleMouseEnter,
+					onMouseMove: this.handleMouseMove,
+					onTouchStart: this.handleTouchStart,
+					onTouchMove: this.handleTouchMove,
+					onTouchEnd: this.handleTouchEnd,
+					id: instancePrefix + '-option-' + optionIndex,
+					title: option.title },
+				this.props.children
+			);
+		}
+	});
+
+	module.exports = Option;
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(260);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var Value = _react2['default'].createClass({
+
+		displayName: 'Value',
+
+		propTypes: {
+			children: _react2['default'].PropTypes.node,
+			disabled: _react2['default'].PropTypes.bool, // disabled prop passed to ReactSelect
+			id: _react2['default'].PropTypes.string, // Unique id for the value - used for aria
+			onClick: _react2['default'].PropTypes.func, // method to handle click on value label
+			onRemove: _react2['default'].PropTypes.func, // method to handle removal of the value
+			value: _react2['default'].PropTypes.object.isRequired },
+
+		// the option object for this value
+		handleMouseDown: function handleMouseDown(event) {
+			if (event.type === 'mousedown' && event.button !== 0) {
+				return;
+			}
+			if (this.props.onClick) {
+				event.stopPropagation();
+				this.props.onClick(this.props.value, event);
+				return;
+			}
+			if (this.props.value.href) {
+				event.stopPropagation();
+			}
+		},
+
+		onRemove: function onRemove(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			this.props.onRemove(this.props.value);
+		},
+
+		handleTouchEndRemove: function handleTouchEndRemove(event) {
+			// Check if the view is being dragged, In this case
+			// we don't want to fire the click event (because the user only wants to scroll)
+			if (this.dragging) return;
+
+			// Fire the mouse events
+			this.onRemove(event);
+		},
+
+		handleTouchMove: function handleTouchMove(event) {
+			// Set a flag that the view is being dragged
+			this.dragging = true;
+		},
+
+		handleTouchStart: function handleTouchStart(event) {
+			// Set a flag that the view is not being dragged
+			this.dragging = false;
+		},
+
+		renderRemoveIcon: function renderRemoveIcon() {
+			if (this.props.disabled || !this.props.onRemove) return;
+			return _react2['default'].createElement(
+				'span',
+				{ className: 'Select-value-icon',
+					'aria-hidden': 'true',
+					onMouseDown: this.onRemove,
+					onTouchEnd: this.handleTouchEndRemove,
+					onTouchStart: this.handleTouchStart,
+					onTouchMove: this.handleTouchMove },
+				'×'
+			);
+		},
+
+		renderLabel: function renderLabel() {
+			var className = 'Select-value-label';
+			return this.props.onClick || this.props.value.href ? _react2['default'].createElement(
+				'a',
+				{ className: className, href: this.props.value.href, target: this.props.value.target, onMouseDown: this.handleMouseDown, onTouchEnd: this.handleMouseDown },
+				this.props.children
+			) : _react2['default'].createElement(
+				'span',
+				{ className: className, role: 'option', 'aria-selected': 'true', id: this.props.id },
+				this.props.children
+			);
+		},
+
+		render: function render() {
+			return _react2['default'].createElement(
+				'div',
+				{ className: (0, _classnames2['default'])('Select-value', this.props.value.className),
+					style: this.props.value.style,
+					title: this.props.value.title
+				},
+				this.renderRemoveIcon(),
+				this.renderLabel()
+			);
+		}
+
+	});
+
+	module.exports = Value;
 
 /***/ }
 /******/ ]);

@@ -1,6 +1,8 @@
+var webpack = require('webpack');
+
 module.exports = {
 	entry: './src/js/main.jsx',
-	output: {
+  output: {
 		path: './dist',
 		filename: 'bundle.js'
 	},
@@ -13,7 +15,11 @@ module.exports = {
 				query: {
 					presets: ['react']
 				}
-			}
+			},
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      }
 		]
 	}
 };

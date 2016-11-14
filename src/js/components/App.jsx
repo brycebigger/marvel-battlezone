@@ -1,6 +1,7 @@
 var React = require('react');
-
 var Link = require('react-router').Link;
+var Versus = require('./Versus.jsx');
+require('../../sass/Battlezone.scss')
 
 function getActiveClass (path) {
 	var current = window.location.hash.slice(1);
@@ -11,13 +12,10 @@ var App = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<header>
-					<Link to="/" className={ getActiveClass('/') }>Home</Link>
+				<header className="battlezone-header">
+					
 				</header>
-				<main>
-					<h1>App</h1>
-					{this.props.children}
-				</main>
+				<Versus wookie="" className="wookie" />
 			</div>
 		);
 	}

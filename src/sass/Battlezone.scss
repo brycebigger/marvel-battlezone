@@ -1,0 +1,114 @@
+$marvelRed: #b50f16;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #b50f16; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #b50f16 32%, #b50f16 32%, #720a0c 80%, #3d0001 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #b50f16 32%,#b50f16 32%,#720a0c 80%,#3d0001 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #b50f16 32%,#b50f16 32%,#720a0c 80%,#3d0001 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  height: 100%;
+  position:relative;
+  &:focus {
+    outline: 0;
+  }
+  -webkit-user-select: none;  // Chrome, Safari
+  -moz-user-select: none;     // Firefox 
+  -ms-user-select: none;      // IE 10+
+  user-select: none;          // future
+}
+
+body, html, h1, h2, h3, h4, h5, h6, p, ul, li, input {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: normal;
+  font-style: normal;
+}
+
+a, button {
+  cursor: pointer
+}
+
+html {
+  touch-action: manipulation;
+}
+
+*:focus {outline:none}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.selectah {
+  width: 300px;
+  border: none; 
+  font-size: 24px;
+  align-self: flex-end;
+  padding: 10px;
+  font-family: "lint-mccree", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background-color: red;
+  line-height: 36px;
+  font-size: 18px;
+}
+.versus {
+  // background-color: black;
+  padding: 20px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .fighter {
+    background-color: green;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    display: block;
+    /*
+    input[type="text"]{
+      width: 80%;
+      max-width: 300px;
+      border: none; 
+      font-size: 24px;
+      align-self: flex-end;
+      padding: 10px;
+      font-family: "lint-mccree", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+    }
+    */
+  }
+  .fighterBlock {
+    width: 35vw;
+    height: 35vw;
+    background-color: red;
+    margin-top: 10%;
+    &:first-child {
+      transform: rotate(-2deg);
+    }
+    &:last-child {
+      transform: rotate(2deg);
+    }
+  }
+  .vsText {
+    color: white;
+    position: absolute;
+    z-index: 99;
+    font-size: 100px;
+    font-family: "badaboom-pro",sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    transform: skew(-3deg, -6deg);
+    text-shadow: 1px 1px 1px #000;
+  }
+}
+
+@import "react-select";
